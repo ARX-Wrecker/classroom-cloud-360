@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AnalyticsController;
+use App\Http\Controllers\Api\V1\AssignmentController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\CertificateController;
 use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\DashboardController;
+use App\Http\Controllers\Api\V1\DocumentController;
 use App\Http\Controllers\Api\V1\ForumController;
+use App\Http\Controllers\Api\V1\GradeController;
 use App\Http\Controllers\Api\V1\LessonController;
 use App\Http\Controllers\Api\V1\MessageController;
 use App\Http\Controllers\Api\V1\ModuleController;
@@ -110,6 +113,20 @@ Route::prefix('v1')->middleware('tenant')->group(function () {
         Route::put('/forum/{id}',    [ForumController::class, 'update']);
         Route::patch('/forum/{id}',  [ForumController::class, 'update']);
         Route::delete('/forum/{id}', [ForumController::class, 'destroy']);
+
+        // ─── Assignments ──────────────────────────────────────────────────
+        Route::get('/assignments',                   [AssignmentController::class, 'index']);
+        Route::post('/assignments',                  [AssignmentController::class, 'store']);
+        Route::post('/assignments/{id}/submit',      [AssignmentController::class, 'submit']);
+        Route::post('/submissions/{id}/grade',       [AssignmentController::class, 'grade']);
+
+        // ─── Documents ────────────────────────────────────────────────────
+        Route::get('/documents',        [DocumentController::class, 'index']);
+        Route::post('/documents',       [DocumentController::class, 'store']);
+        Route::delete('/documents/{id}',[DocumentController::class, 'destroy']);
+
+        // ─── Grades ───────────────────────────────────────────────────────
+        Route::get('/grades', [GradeController::class, 'index']);
 
         // ─── Analytics ────────────────────────────────────────────────────
         Route::get('/analytics/my-progress', [AnalyticsController::class, 'myProgress']);

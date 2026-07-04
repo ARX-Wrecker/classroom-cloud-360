@@ -5,6 +5,7 @@ import {
   Settings, Shield, Globe, Mail, Bell, Database, Palette,
   Users, Building2, CreditCard, Key, Save, ToggleLeft, ToggleRight,
   Server, Lock, Upload, ChevronRight, AlertTriangle,
+  Video, Briefcase, Bot,
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 
@@ -261,12 +262,14 @@ export default function AdminPage() {
               <div className="space-y-4">
                 <h2 className="text-base font-semibold text-gray-900 pb-3 border-b border-gray-100">Integraciones</h2>
                 {[
-                  { name: 'Google Meet', desc: 'Videoclases integradas con Google Meet', key: 'googleMeetEnabled' as const, logo: '🎥' },
-                  { name: 'Microsoft Teams', desc: 'Videoclases y colaboración con Teams', key: 'teamsEnabled' as const, logo: '💼' },
-                  { name: 'OpenAI (ChatGPT)', desc: 'Asistente IA para estudiantes y profesores', key: 'openAiEnabled' as const, logo: '🤖' },
+                  { name: 'Google Meet', desc: 'Videoclases integradas con Google Meet', key: 'googleMeetEnabled' as const, Icon: Video, color: 'text-green-600', bg: 'bg-green-50' },
+                  { name: 'Microsoft Teams', desc: 'Videoclases y colaboración con Teams', key: 'teamsEnabled' as const, Icon: Briefcase, color: 'text-blue-700', bg: 'bg-blue-50' },
+                  { name: 'OpenAI (ChatGPT)', desc: 'Asistente IA para estudiantes y profesores', key: 'openAiEnabled' as const, Icon: Bot, color: 'text-purple-600', bg: 'bg-purple-50' },
                 ].map(intg => (
                   <div key={intg.key} className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg">
-                    <span className="text-2xl">{intg.logo}</span>
+                    <div className={`w-10 h-10 rounded-lg ${intg.bg} flex items-center justify-center`}>
+                      <intg.Icon size={20} className={intg.color} />
+                    </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-gray-900">{intg.name}</p>
                       <p className="text-xs text-gray-500">{intg.desc}</p>

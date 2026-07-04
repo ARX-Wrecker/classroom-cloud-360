@@ -110,3 +110,41 @@ export const forumApi = {
   create: (data: Record<string, unknown>) => api.post('/forum', data),
   reply: (id: number, data: Record<string, unknown>) => api.post(`/forum/${id}/reply`, data),
 };
+
+// Assignments
+export const assignmentsApi = {
+  list: (params?: Record<string, string | number>) => api.get('/assignments', { params }),
+  create: (data: Record<string, unknown>) => api.post('/assignments', data),
+  submit: (id: number, formData: FormData) =>
+    api.post(`/assignments/${id}/submit`, formData, { headers: { 'Content-Type': 'multipart/form-data' } }),
+  grade: (submissionId: number, data: { grade: number; feedback?: string }) =>
+    api.post(`/submissions/${submissionId}/grade`, data),
+};
+
+// Documents
+export const documentsApi = {
+  list: (params?: Record<string, string | number>) => api.get('/documents', { params }),
+  upload: (formData: FormData) =>
+    api.post('/documents', formData, { headers: { 'Content-Type': 'multipart/form-data' } }),
+  delete: (id: number) => api.delete(`/documents/${id}`),
+};
+
+// Grades
+export const gradesApi = {
+  list: () => api.get('/grades'),
+};
+
+// Quizzes
+export const quizzesApi = {
+  list: (params?: Record<string, string | number>) => api.get('/quizzes', { params }),
+  get: (id: number) => api.get(`/quizzes/${id}`),
+  submit: (id: number, data: { answers: Record<string, number> }) =>
+    api.post(`/quizzes/${id}/submit`, data),
+};
+
+// Analytics
+export const analyticsApi = {
+  overview: () => api.get('/analytics/overview'),
+  courses: () => api.get('/analytics/courses'),
+  myProgress: () => api.get('/analytics/my-progress'),
+};

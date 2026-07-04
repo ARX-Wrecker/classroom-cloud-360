@@ -4,7 +4,7 @@ import { useState } from 'react';
 import {
   User, Mail, Phone, Globe, MapPin, Camera,
   Award, BookOpen, Clock, Star, Edit3, Check,
-  Linkedin, Github, Twitter, Shield,
+  Linkedin, Github, Twitter, Shield, Target, Flame, TrendingUp, Library,
 } from 'lucide-react';
 import { useAuthStore } from '@/stores/authStore';
 
@@ -202,13 +202,15 @@ export default function ProfilePage() {
             <h3 className="text-sm font-semibold text-gray-700 mb-3">Logros</h3>
             <div className="space-y-2">
               {[
-                { emoji: '🎯', name: 'Primer curso', desc: 'Completaste tu primer curso' },
-                { emoji: '🔥', name: 'Racha de 7 días', desc: '7 días seguidos de estudio' },
-                { emoji: '⭐', name: 'Estudiante destacado', desc: 'Top 10% de tu cohorte' },
-                { emoji: '📚', name: 'Bibliófilo', desc: '10 cursos completados' },
+                { Icon: Target, name: 'Primer curso', desc: 'Completaste tu primer curso', color: 'text-blue-600', bg: 'bg-blue-50' },
+                { Icon: Flame, name: 'Racha de 7 días', desc: '7 días seguidos de estudio', color: 'text-orange-500', bg: 'bg-orange-50' },
+                { Icon: Star, name: 'Estudiante destacado', desc: 'Top 10% de tu cohorte', color: 'text-amber-500', bg: 'bg-amber-50' },
+                { Icon: Library, name: 'Bibliófilo', desc: '10 cursos completados', color: 'text-purple-600', bg: 'bg-purple-50' },
               ].map((a, i) => (
                 <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
-                  <span className="text-xl">{a.emoji}</span>
+                  <div className={`w-8 h-8 rounded-lg ${a.bg} flex items-center justify-center flex-shrink-0`}>
+                    <a.Icon size={16} className={a.color} />
+                  </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900">{a.name}</p>
                     <p className="text-xs text-gray-500">{a.desc}</p>

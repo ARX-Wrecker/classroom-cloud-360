@@ -81,9 +81,9 @@ const platformColor: Record<string, string> = {
 };
 
 const statusBadge: Record<string, { label: string; class: string }> = {
-  live: { label: '🔴 En vivo', class: 'bg-red-100 text-red-700' },
-  upcoming: { label: '⏰ Próxima', class: 'bg-amber-100 text-amber-700' },
-  recorded: { label: '📹 Grabada', class: 'bg-gray-100 text-gray-600' },
+  live: { label: 'En vivo', class: 'bg-red-100 text-red-700' },
+  upcoming: { label: 'Próxima', class: 'bg-amber-100 text-amber-700' },
+  recorded: { label: 'Grabada', class: 'bg-gray-100 text-gray-600' },
 };
 
 export default function VideoclasesPage() {
@@ -125,10 +125,10 @@ export default function VideoclasesPage() {
       {/* Filters */}
       <div className="flex gap-2 mb-6">
         {[
-          { v: 'all', label: 'Todas' },
-          { v: 'live', label: '🔴 En vivo' },
-          { v: 'upcoming', label: '⏰ Próximas' },
-          { v: 'recorded', label: '📹 Grabadas' },
+          { v: 'all', label: 'Todas', Icon: null },
+          { v: 'live', label: 'En vivo', Icon: Radio },
+          { v: 'upcoming', label: 'Próximas', Icon: Clock },
+          { v: 'recorded', label: 'Grabadas', Icon: MonitorPlay },
         ].map(f => (
           <button
             key={f.v}
@@ -139,7 +139,10 @@ export default function VideoclasesPage() {
                 : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
             }`}
           >
-            {f.label}
+            <span className="flex items-center gap-1.5">
+              {f.Icon && <f.Icon size={13} />}
+              {f.label}
+            </span>
           </button>
         ))}
       </div>
