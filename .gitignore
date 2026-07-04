@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.*.local
+backend/.env
+backend/.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker volumes
+storage/postgres/
+storage/redis/
+storage/minio/
+
+# Laravel
+backend/bootstrap/cache/*.php
+backend/storage/logs/
+backend/storage/app/public/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/testing/
+backend/storage/framework/views/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lock files (keep package-lock, remove yarn)
+yarn.lock
+
+# Test coverage
+coverage/
+
+# Misc
+.cache/
+*.pem

@@ -1,0 +1,129 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: cc360_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: classroom_cloud_360
+      POSTGRES_USER: cc360_user
+      POSTGRES_PASSWORD: cc360_secure_password_2024
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cc360_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cc360_user -d classroom_cloud_360"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  redis:
+    image: redis:7-alpine
+    container_name: cc360_redis
+    restart: unless-stopped
+    command: redis-server --requirepass cc360_redis_password
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - cc360_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "cc360_redis_password", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cc360_backend
+    restart: unless-stopped
+    environment:
+      APP_NAME: "Classroom Cloud 360"
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: classroom_cloud_360
+      DB_USERNAME: cc360_user
+      DB_PASSWORD: cc360_secure_password_2024
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: cc360_redis_password
+      CACHE_DRIVER: redis
+      SESSION_DRIVER: redis
+      QUEUE_CONNECTION: redis
+      FRONTEND_URL: http://localhost:3000
+      SANCTUM_STATEFUL_DOMAINS: "localhost:3000,localhost"
+    ports:
+      - "8003:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - cc360_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cc360_frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8003/api/v1
+      NEXT_PUBLIC_APP_NAME: "Classroom Cloud 360"
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+    networks:
+      - cc360_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: cc360_nginx
+    restart: unless-stopped
+    ports:
+      - "8090:80"
+    volumes:
+      - ./infrastructure/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./infrastructure/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - cc360_network
+
+  minio:
+    image: minio/minio:latest
+    container_name: cc360_minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: cc360_minio_user
+      MINIO_ROOT_PASSWORD: cc360_minio_password_2024
+    ports:
+      - "9002:9000"
+      - "9003:9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - cc360_network
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
+
+networks:
+  cc360_network:
+    driver: bridge
