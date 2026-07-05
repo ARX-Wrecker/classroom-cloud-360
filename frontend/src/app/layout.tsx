@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: { default: 'Classroom Cloud 360', template: '%s | Classroom Cloud 360' },
   description: 'La plataforma de aprendizaje del futuro. Aprende, enseña y crece con Classroom Cloud 360.',
   keywords: ['LMS', 'aprendizaje', 'cursos', 'e-learning', 'educación'],
+  icons: {
+    icon: '/logo-cc360.jpg',
+    shortcut: '/logo-cc360.jpg',
+    apple: '/logo-cc360.jpg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

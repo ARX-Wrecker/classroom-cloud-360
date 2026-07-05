@@ -1,55 +1,59 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import {
   BookOpen, Users, Award, Zap, Globe, Shield, BarChart3, Star,
-  ArrowRight, GraduationCap, Play, Monitor, Database, Palette,
-  Lock, TrendingUp, Cpu, Terminal, Server, Smartphone, CheckCircle,
+  ArrowRight, GraduationCap, Play, Lock,
+  TrendingUp, Terminal, Server, CheckCircle,
 } from 'lucide-react';
 
 const features = [
-  { icon: BookOpen,   title: 'Contenido de calidad',       desc: 'Cursos creados por expertos de la industria con material actualizado.' },
-  { icon: Users,      title: 'Aprendizaje colaborativo',    desc: 'Foros, mensajería y grupos de estudio para aprender en comunidad.' },
-  { icon: Award,      title: 'Certificados verificables',   desc: 'Obtén certificados con código QR verificable y compartibles en LinkedIn.' },
-  { icon: Zap,        title: 'A tu propio ritmo',           desc: 'Aprende cuando quieras, donde quieras, en cualquier dispositivo.' },
-  { icon: Globe,      title: 'Contenido en español',        desc: 'Toda la plataforma y los cursos disponibles en español latinoamericano.' },
-  { icon: BarChart3,  title: 'Seguimiento de progreso',     desc: 'Analytics detallados de tu aprendizaje y progreso por curso.' },
-];
-
-const stats = [
-  { value: '50,000+', label: 'Estudiantes activos' },
-  { value: '1,200+',  label: 'Cursos disponibles' },
-  { value: '300+',    label: 'Instructores expertos' },
-  { value: '98%',     label: 'Tasa de satisfacción' },
+  {
+    icon: BookOpen,
+    title: 'Contenido de calidad',
+    desc: 'Cursos creados por expertos de la industria con material actualizado.',
+    img: '/aprendizaje-colaborativo.jpg',
+  },
+  {
+    icon: Users,
+    title: 'Aprendizaje colaborativo',
+    desc: 'Foros, mensajería y grupos de estudio para aprender en comunidad.',
+    img: '/aprendizaje-colaborativo.jpg',
+  },
+  {
+    icon: Award,
+    title: 'Certificados verificables',
+    desc: 'Obtén certificados con código QR verificable y compartibles en LinkedIn.',
+    img: '/certificados.jpg',
+  },
+  {
+    icon: Zap,
+    title: 'A tu propio ritmo',
+    desc: 'Aprende cuando quieras, donde quieras, en cualquier dispositivo.',
+    img: '/atupropio_ritmo.jpg',
+  },
+  {
+    icon: Globe,
+    title: 'Contenido en español',
+    desc: 'Toda la plataforma y los cursos disponibles en español latinoamericano.',
+    img: '/seguimiento.jpg',
+  },
+  {
+    icon: BarChart3,
+    title: 'Seguimiento de progreso',
+    desc: 'Analytics detallados de tu aprendizaje y progreso por curso.',
+    img: '/qa.jpg',
+  },
 ];
 
 const mockCourses = [
-  {
-    id: 1, icon: Monitor,
-    title: 'Desarrollo Web Full Stack con Next.js 15',
-    category: 'Desarrollo', level: 'Intermedio',
-    students: 3420, rating: 4.9,
-    color: 'from-blue-500 to-indigo-600',
-  },
   {
     id: 2, icon: Lock,
     title: 'Ciberseguridad y Ethical Hacking',
     category: 'Seguridad', level: 'Avanzado',
     students: 2750, rating: 4.8,
     color: 'from-red-500 to-rose-600',
-  },
-  {
-    id: 3, icon: Database,
-    title: 'Data Science con Python y Machine Learning',
-    category: 'Datos / IA', level: 'Avanzado',
-    students: 2180, rating: 4.8,
-    color: 'from-violet-500 to-purple-600',
-  },
-  {
-    id: 4, icon: Palette,
-    title: 'Diseño UX/UI con Figma desde cero',
-    category: 'Diseño', level: 'Principiante',
-    students: 5600, rating: 4.9,
-    color: 'from-pink-500 to-fuchsia-600',
   },
   {
     id: 5, icon: Server,
@@ -59,25 +63,11 @@ const mockCourses = [
     color: 'from-slate-500 to-gray-600',
   },
   {
-    id: 6, icon: TrendingUp,
-    title: 'Marketing Digital y Redes Sociales',
-    category: 'Marketing', level: 'Principiante',
-    students: 1890, rating: 4.7,
-    color: 'from-orange-500 to-amber-500',
-  },
-  {
-    id: 7, icon: Smartphone,
-    title: 'Informática Básica · Intermedia · Avanzada · macOS',
+    id: 7, icon: Shield,
+    title: 'Informática Básica · Intermedia · Avanzada · macOS · Seguridad',
     category: 'Computación', level: 'Principiante',
     students: 4100, rating: 4.8,
     color: 'from-teal-500 to-cyan-600',
-  },
-  {
-    id: 8, icon: Cpu,
-    title: 'Inteligencia Artificial con Python',
-    category: 'IA', level: 'Intermedio',
-    students: 4200, rating: 4.9,
-    color: 'from-blue-600 to-sky-500',
   },
   {
     id: 9, icon: Terminal,
@@ -95,6 +85,23 @@ const levelColors: Record<string, string> = {
 };
 
 export default function LandingPage() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    let pos = 0;
+    const speed = 0.5;
+    const step = () => {
+      pos += speed;
+      if (pos >= track.scrollWidth / 2) pos = 0;
+      track.style.transform = `translateX(-${pos}px)`;
+      requestAnimationFrame(step);
+    };
+    const id = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FAFAF8', color: '#1C2A3A' }}>
 
@@ -102,19 +109,30 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style={{ backgroundColor: 'rgba(255,255,255,0.92)', borderBottom: '1px solid #E8E8E2' }}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={36} height={36} className="rounded-xl object-cover" />
+            {/* Logo 3D flotante en el navbar */}
+            <div className="relative" style={{ filter: 'drop-shadow(0 4px 12px rgba(74,111,165,0.45))' }}>
+              <Image
+                src="/logo-cc360.jpg"
+                alt="Classroom Cloud 360"
+                width={44}
+                height={44}
+                className="rounded-xl object-cover"
+                style={{ animation: 'logoFloat 3s ease-in-out infinite' }}
+                priority
+              />
+            </div>
             <span className="font-bold text-[#1C2A3A]">Classroom Cloud 360</span>
           </div>
           <div className="hidden md:flex items-center gap-6">
             <Link href="#features" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Características</Link>
             <Link href="#courses"  className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Cursos</Link>
-            <Link href="#stats"    className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Estadísticas</Link>
+            <Link href="#instructor" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Instructor</Link>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/login" className="text-sm font-medium text-[#1C2A3A] hover:text-[#4A6FA5] transition-colors">
               Iniciar sesión
             </Link>
-            <Link href="/register" className="text-sm font-semibold px-4 py-2 rounded-xl text-white transition-colors" style={{ backgroundColor: '#4A6FA5' }}>
+            <Link href="/register" className="text-sm font-semibold px-4 py-2 rounded-xl text-white transition-all hover:-translate-y-0.5" style={{ backgroundColor: '#4A6FA5' }}>
               Comenzar gratis
             </Link>
           </div>
@@ -128,11 +146,16 @@ export default function LandingPage() {
 
             {/* Text */}
             <div className="flex-1 text-center lg:text-left">
-              {/* Superprof badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6" style={{ backgroundColor: '#FFF8E7', color: '#92400E', border: '1px solid #FCD34D' }}>
+              <Link
+                href="https://www.superprof.cl/hola-soy-ingeniero-computacion-informatica-con-mas-anos-experiencia-tecnologias-informacion-cuento.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6 hover:opacity-80 transition-opacity"
+                style={{ backgroundColor: '#FFF8E7', color: '#92400E', border: '1px solid #FCD34D' }}
+              >
                 <Star size={12} fill="currentColor" className="text-amber-500" />
                 Instructor verificado en Superprof · 5 estrellas
-              </div>
+              </Link>
 
               <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1C2A3A' }}>
                 La plataforma de{' '}
@@ -163,7 +186,6 @@ export default function LandingPage() {
                 </Link>
               </div>
 
-              {/* Social proof */}
               <div className="flex items-center gap-5 text-sm" style={{ color: '#8A9BB0' }}>
                 <div className="flex -space-x-2">
                   {['A','B','C','D'].map((l) => (
@@ -173,35 +195,49 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <span>+50,000 estudiantes activos</span>
-                <div className="flex items-center gap-1 text-amber-500">
-                  <Star size={13} fill="currentColor" />
+                <div className="flex items-center gap-1">
+                  <Star size={13} fill="#F59E0B" className="text-amber-400" />
                   <span className="font-semibold" style={{ color: '#1C2A3A' }}>4.9/5</span>
                 </div>
               </div>
             </div>
 
-            {/* Logo / Imagen */}
+            {/* Logo 3D grande flotante */}
             <div className="flex-shrink-0 flex flex-col items-center gap-4">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(circle, rgba(74,111,165,0.15) 0%, transparent 70%)', transform: 'scale(1.4)' }} />
+              <div
+                className="relative"
+                style={{
+                  filter: 'drop-shadow(0 32px 64px rgba(74,111,165,0.45)) drop-shadow(0 8px 24px rgba(74,111,165,0.3))',
+                  animation: 'heroFloat 4s ease-in-out infinite',
+                }}
+              >
+                {/* Halo glow */}
+                <div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(74,111,165,0.25) 0%, transparent 70%)',
+                    transform: 'scale(1.6)',
+                    zIndex: 0,
+                    animation: 'pulse 4s ease-in-out infinite',
+                  }}
+                />
                 <Image
                   src="/logo-cc360.jpg"
                   alt="Classroom Cloud 360"
-                  width={320}
-                  height={320}
+                  width={380}
+                  height={380}
                   className="relative rounded-3xl object-cover"
-                  style={{ boxShadow: '0 24px 64px rgba(74,111,165,0.25)' }}
+                  style={{ zIndex: 1 }}
                   priority
                 />
               </div>
-              {/* Floating badges */}
-              <div className="flex gap-3">
+              <div className="flex gap-3 mt-2">
                 {[
-                  { Icon: CheckCircle, text: 'Gratis', color: '#059669' },
+                  { Icon: CheckCircle, text: 'Gratis',       color: '#059669' },
                   { Icon: Award,       text: 'Certificados', color: '#4A6FA5' },
-                  { Icon: Globe,       text: 'En español', color: '#7C3AED' },
+                  { Icon: Globe,       text: 'En español',   color: '#7C3AED' },
                 ].map(({ Icon, text, color }) => (
-                  <div key={text} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white shadow-sm" style={{ color, border: `1px solid ${color}22` }}>
+                  <div key={text} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white shadow-md" style={{ color, border: `1px solid ${color}33` }}>
                     <Icon size={12} />
                     {text}
                   </div>
@@ -212,19 +248,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Stats ─── */}
-      <section id="stats" className="py-16" style={{ backgroundColor: '#3A5580' }}>
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="text-3xl md:text-4xl font-extrabold text-white mb-1">{s.value}</p>
-              <p className="text-sm" style={{ color: '#A3BDE1' }}>{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── Features ─── */}
+      {/* ─── Features con imágenes ─── */}
       <section id="features" className="py-24" style={{ backgroundColor: '#F4F4F0' }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14">
@@ -235,58 +259,105 @@ export default function LandingPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
-              <div key={f.title} className="bg-white rounded-2xl p-6 hover:-translate-y-1 transition-all duration-200" style={{ border: '1px solid #E8E8E2', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#EAF0F8' }}>
-                  <f.icon size={22} style={{ color: '#4A6FA5' }} />
+              <div
+                key={f.title}
+                className="bg-white rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-200"
+                style={{ border: '1px solid #E8E8E2', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}
+              >
+                <div className="h-40 overflow-hidden relative">
+                  <Image
+                    src={f.img}
+                    alt={f.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.15))' }} />
                 </div>
-                <h3 className="font-semibold mb-2" style={{ color: '#1C2A3A' }}>{f.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#6A7D92' }}>{f.desc}</p>
+                <div className="p-5">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: '#EAF0F8' }}>
+                    <f.icon size={20} style={{ color: '#4A6FA5' }} />
+                  </div>
+                  <h3 className="font-semibold mb-1.5" style={{ color: '#1C2A3A' }}>{f.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#6A7D92' }}>{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── Instructor Badge ─── */}
-      <section className="py-12 bg-white" style={{ borderTop: '1px solid #E8E8E2', borderBottom: '1px solid #E8E8E2' }}>
-        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-6">
-          <div className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#EAF0F8' }}>
-            <GraduationCap size={32} style={{ color: '#4A6FA5' }} />
+      {/* ─── Instructor Superprof ─── */}
+      <section id="instructor" className="py-16 bg-white" style={{ borderTop: '1px solid #E8E8E2', borderBottom: '1px solid #E8E8E2' }}>
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#8A9BB0' }}>Instructor Principal</p>
+            <h2 className="text-2xl font-bold" style={{ color: '#1C2A3A' }}>Certificado en Superprof · 5 estrellas</h2>
           </div>
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#8A9BB0' }}>Instructor Principal</p>
-            <h3 className="text-xl font-bold mb-1" style={{ color: '#1C2A3A' }}>Instructor certificado · 5 estrellas en Superprof</h3>
-            <p className="text-sm" style={{ color: '#6A7D92' }}>
-              Experto en tecnología con calificación perfecta en Superprof Chile. Especialidad en ciberseguridad, desarrollo web, inteligencia artificial e infraestructura.
-            </p>
-          </div>
-          <div className="flex items-center gap-1 shrink-0">
-            {[1,2,3,4,5].map(i => <Star key={i} size={20} fill="#F59E0B" className="text-amber-400" />)}
-            <span className="ml-2 font-bold text-lg" style={{ color: '#1C2A3A' }}>5.0</span>
+          <div className="flex flex-col md:flex-row items-center gap-8 p-8 rounded-2xl" style={{ backgroundColor: '#F5F7FA', border: '1px solid #E8E8E2' }}>
+            <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#EAF0F8' }}>
+              <GraduationCap size={36} style={{ color: '#4A6FA5' }} />
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-lg font-bold mb-1" style={{ color: '#1C2A3A' }}>Ingeniero en Computación e Informática</h3>
+              <p className="text-sm mb-3" style={{ color: '#6A7D92' }}>
+                Más de 15 años de experiencia en Tecnologías de la Información. Especialista en ciberseguridad, desarrollo web, inteligencia artificial e infraestructura de servidores.
+              </p>
+              <div className="flex items-center gap-3 justify-center md:justify-start flex-wrap">
+                <div className="flex items-center gap-1">
+                  {[1,2,3,4,5].map(i => <Star key={i} size={18} fill="#F59E0B" className="text-amber-400" />)}
+                  <span className="ml-1 font-bold" style={{ color: '#1C2A3A' }}>5.0</span>
+                </div>
+                <span className="text-sm" style={{ color: '#9AABB8' }}>·</span>
+                <Link
+                  href="https://www.superprof.cl/hola-soy-ingeniero-computacion-informatica-con-mas-anos-experiencia-tecnologias-informacion-cuento.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-1.5 rounded-full transition-all hover:opacity-80"
+                  style={{ backgroundColor: '#4A6FA5', color: 'white' }}
+                >
+                  Ver perfil en Superprof
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+            <div className="shrink-0 text-center">
+              <div className="text-4xl font-extrabold mb-1" style={{ color: '#4A6FA5' }}>5.0</div>
+              <div className="text-xs" style={{ color: '#8A9BB0' }}>Calificación Superprof</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── Courses ─── */}
-      <section id="courses" className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-10">
+      {/* ─── Courses Carousel ─── */}
+      <section id="courses" className="py-24 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 mb-10">
+          <div className="flex items-end justify-between">
             <div>
               <h2 className="text-3xl font-bold mb-2" style={{ color: '#1C2A3A' }}>Cursos más populares</h2>
               <p style={{ color: '#6A7D92' }}>Aprende las habilidades más demandadas del mercado · <strong style={{ color: '#059669' }}>Todos 100% gratuitos</strong></p>
             </div>
-            <Link href="/courses" className="hidden sm:flex items-center gap-1.5 font-medium text-sm hover:opacity-80 transition-opacity" style={{ color: '#4A6FA5' }}>
+            <Link href="/login" className="hidden sm:flex items-center gap-1.5 font-medium text-sm hover:opacity-80 transition-opacity" style={{ color: '#4A6FA5' }}>
               Ver todos <ArrowRight size={16} />
             </Link>
           </div>
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mockCourses.map((course) => (
+        {/* Infinite scroll carousel */}
+        <div className="overflow-hidden">
+          <div ref={trackRef} className="flex gap-6 w-max" style={{ willChange: 'transform' }}>
+            {/* Duplicated for infinite loop */}
+            {[...mockCourses, ...mockCourses, ...mockCourses].map((course, idx) => (
               <Link
-                key={course.id}
+                key={`${course.id}-${idx}`}
                 href="/login"
-                className="group block rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-200"
-                style={{ border: '1px solid #E8E8E2', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', backgroundColor: 'white' }}
+                className="group block rounded-2xl overflow-hidden flex-shrink-0 hover:-translate-y-1 transition-all duration-200"
+                style={{
+                  width: '300px',
+                  border: '1px solid #E8E8E2',
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+                  backgroundColor: 'white',
+                }}
               >
                 <div className={`h-36 bg-gradient-to-br ${course.color} relative flex items-center justify-center`}>
                   <course.icon size={44} className="text-white/25" />
@@ -344,7 +415,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <Image src="/logo-cc360.jpg" alt="CC360" width={32} height={32} className="rounded-lg object-cover" />
+              <Image src="/logo-cc360.jpg" alt="CC360" width={36} height={36} className="rounded-lg object-cover" style={{ filter: 'drop-shadow(0 2px 8px rgba(74,111,165,0.5))' }} />
               <span className="font-bold text-white">Classroom Cloud 360</span>
             </div>
             <div className="flex items-center gap-6 text-sm" style={{ color: '#8A9BB0' }}>
@@ -357,6 +428,22 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      <style jsx global>{`
+        @keyframes heroFloat {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33%       { transform: translateY(-14px) rotate(1deg); }
+          66%       { transform: translateY(-7px) rotate(-0.5deg); }
+        }
+        @keyframes logoFloat {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-3px); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.6; transform: scale(1.6); }
+          50%       { opacity: 1; transform: scale(1.8); }
+        }
+      `}</style>
     </div>
   );
 }
