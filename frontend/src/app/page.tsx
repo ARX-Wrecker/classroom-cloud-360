@@ -1,200 +1,317 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
-  BookOpen, Users, Award, Zap, Globe, Shield, BarChart3, Clock, Star,
-  ArrowRight, GraduationCap, Play,
+  BookOpen, Users, Award, Zap, Globe, Shield, BarChart3, Star,
+  ArrowRight, GraduationCap, Play, Monitor, Database, Palette,
+  Lock, TrendingUp, Cpu, Terminal, Server, Smartphone, CheckCircle,
 } from 'lucide-react';
 
 const features = [
-  { icon: BookOpen, title: 'Contenido de calidad', desc: 'Cursos creados por expertos de la industria con material actualizado.' },
-  { icon: Users, title: 'Aprendizaje colaborativo', desc: 'Foros, mensajería y grupos de estudio para aprender en comunidad.' },
-  { icon: Award, title: 'Certificados verificables', desc: 'Obtén certificados con código QR verificable y compartibles en LinkedIn.' },
-  { icon: Zap, title: 'A tu propio ritmo', desc: 'Aprende cuando quieras, donde quieras, en cualquier dispositivo.' },
-  { icon: Globe, title: 'Contenido en español', desc: 'Toda la plataforma y los cursos disponibles en español latinoamericano.' },
-  { icon: BarChart3, title: 'Seguimiento de progreso', desc: 'Analytics detallados de tu aprendizaje y progreso por curso.' },
+  { icon: BookOpen,   title: 'Contenido de calidad',       desc: 'Cursos creados por expertos de la industria con material actualizado.' },
+  { icon: Users,      title: 'Aprendizaje colaborativo',    desc: 'Foros, mensajería y grupos de estudio para aprender en comunidad.' },
+  { icon: Award,      title: 'Certificados verificables',   desc: 'Obtén certificados con código QR verificable y compartibles en LinkedIn.' },
+  { icon: Zap,        title: 'A tu propio ritmo',           desc: 'Aprende cuando quieras, donde quieras, en cualquier dispositivo.' },
+  { icon: Globe,      title: 'Contenido en español',        desc: 'Toda la plataforma y los cursos disponibles en español latinoamericano.' },
+  { icon: BarChart3,  title: 'Seguimiento de progreso',     desc: 'Analytics detallados de tu aprendizaje y progreso por curso.' },
 ];
 
 const stats = [
   { value: '50,000+', label: 'Estudiantes activos' },
-  { value: '1,200+', label: 'Cursos disponibles' },
-  { value: '300+', label: 'Instructores expertos' },
-  { value: '98%', label: 'Tasa de satisfacción' },
+  { value: '1,200+',  label: 'Cursos disponibles' },
+  { value: '300+',    label: 'Instructores expertos' },
+  { value: '98%',     label: 'Tasa de satisfacción' },
 ];
 
 const mockCourses = [
-  { id: 1, title: 'Desarrollo Web Full Stack con Next.js 15', category: 'Desarrollo', level: 'Intermedio', price: 'Gratis', students: 3420, rating: 4.9 },
-  { id: 2, title: 'Data Science con Python y Machine Learning', category: 'Datos', level: 'Avanzado', price: '$49.990', students: 2180, rating: 4.8 },
-  { id: 3, title: 'Diseño UX/UI con Figma desde cero', category: 'Diseño', level: 'Principiante', price: 'Gratis', students: 5600, rating: 4.9 },
-  { id: 4, title: 'Marketing Digital y Redes Sociales', category: 'Marketing', level: 'Principiante', price: '$29.990', students: 1890, rating: 4.7 },
-  { id: 5, title: 'Seguridad Informática y Ethical Hacking', category: 'Seguridad', level: 'Avanzado', price: '$59.990', students: 980, rating: 4.8 },
-  { id: 6, title: 'Inteligencia Artificial con Python', category: 'IA', level: 'Intermedio', price: 'Gratis', students: 4200, rating: 4.9 },
+  {
+    id: 1, icon: Monitor,
+    title: 'Desarrollo Web Full Stack con Next.js 15',
+    category: 'Desarrollo', level: 'Intermedio',
+    students: 3420, rating: 4.9,
+    color: 'from-blue-500 to-indigo-600',
+  },
+  {
+    id: 2, icon: Lock,
+    title: 'Ciberseguridad y Ethical Hacking',
+    category: 'Seguridad', level: 'Avanzado',
+    students: 2750, rating: 4.8,
+    color: 'from-red-500 to-rose-600',
+  },
+  {
+    id: 3, icon: Database,
+    title: 'Data Science con Python y Machine Learning',
+    category: 'Datos / IA', level: 'Avanzado',
+    students: 2180, rating: 4.8,
+    color: 'from-violet-500 to-purple-600',
+  },
+  {
+    id: 4, icon: Palette,
+    title: 'Diseño UX/UI con Figma desde cero',
+    category: 'Diseño', level: 'Principiante',
+    students: 5600, rating: 4.9,
+    color: 'from-pink-500 to-fuchsia-600',
+  },
+  {
+    id: 5, icon: Server,
+    title: 'Infraestructura de Servidores y Datacenter',
+    category: 'Infraestructura', level: 'Intermedio',
+    students: 1430, rating: 4.7,
+    color: 'from-slate-500 to-gray-600',
+  },
+  {
+    id: 6, icon: TrendingUp,
+    title: 'Marketing Digital y Redes Sociales',
+    category: 'Marketing', level: 'Principiante',
+    students: 1890, rating: 4.7,
+    color: 'from-orange-500 to-amber-500',
+  },
+  {
+    id: 7, icon: Smartphone,
+    title: 'Informática Básica · Intermedia · Avanzada · macOS',
+    category: 'Computación', level: 'Principiante',
+    students: 4100, rating: 4.8,
+    color: 'from-teal-500 to-cyan-600',
+  },
+  {
+    id: 8, icon: Cpu,
+    title: 'Inteligencia Artificial con Python',
+    category: 'IA', level: 'Intermedio',
+    students: 4200, rating: 4.9,
+    color: 'from-blue-600 to-sky-500',
+  },
+  {
+    id: 9, icon: Terminal,
+    title: 'Scripting con PowerShell',
+    category: 'Automatización', level: 'Intermedio',
+    students: 980, rating: 4.6,
+    color: 'from-indigo-500 to-blue-700',
+  },
 ];
 
 const levelColors: Record<string, string> = {
   Principiante: 'bg-emerald-100 text-emerald-700',
-  Intermedio: 'bg-amber-100 text-amber-700',
-  Avanzado: 'bg-red-100 text-red-700',
+  Intermedio:   'bg-amber-100 text-amber-700',
+  Avanzado:     'bg-red-100 text-red-700',
 };
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+    <div className="min-h-screen" style={{ backgroundColor: '#FAFAF8', color: '#1C2A3A' }}>
+
+      {/* ─── Navbar ─── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style={{ backgroundColor: 'rgba(255,255,255,0.92)', borderBottom: '1px solid #E8E8E2' }}>
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
-              <GraduationCap size={18} className="text-white" />
-            </div>
-            <span className="font-bold text-slate-900 dark:text-white">Classroom Cloud 360</span>
+            <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={36} height={36} className="rounded-xl object-cover" />
+            <span className="font-bold text-[#1C2A3A]">Classroom Cloud 360</span>
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <Link href="#features" className="text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 transition-colors">Características</Link>
-            <Link href="#courses" className="text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 transition-colors">Cursos</Link>
-            <Link href="#stats" className="text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 transition-colors">Estadísticas</Link>
+            <Link href="#features" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Características</Link>
+            <Link href="#courses"  className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Cursos</Link>
+            <Link href="#stats"    className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Estadísticas</Link>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/login" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 transition-colors">
+            <Link href="/login" className="text-sm font-medium text-[#1C2A3A] hover:text-[#4A6FA5] transition-colors">
               Iniciar sesión
             </Link>
-            <Link href="/register" className="bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors">
+            <Link href="/register" className="text-sm font-semibold px-4 py-2 rounded-xl text-white transition-colors" style={{ backgroundColor: '#4A6FA5' }}>
               Comenzar gratis
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM2MzY2ZjEiIGZpbGwtb3BhY2l0eT0iMC4wNCI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptMCAwdi02aC02djZoNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50" />
+      {/* ─── Hero ─── */}
+      <section className="relative pt-28 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #FAFAF8 50%, #EAF0F8 100%)' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
 
-        <div className="relative max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-primary-100 dark:border-primary-800">
-            <Zap size={12} />
-            La plataforma LMS más moderna de Latinoamérica
-          </div>
+            {/* Text */}
+            <div className="flex-1 text-center lg:text-left">
+              {/* Superprof badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6" style={{ backgroundColor: '#FFF8E7', color: '#92400E', border: '1px solid #FCD34D' }}>
+                <Star size={12} fill="currentColor" className="text-amber-500" />
+                Instructor verificado en Superprof · 5 estrellas
+              </div>
 
-          <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
-            La plataforma de{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
-              aprendizaje
-            </span>{' '}
-            del futuro
-          </h1>
+              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1C2A3A' }}>
+                La plataforma de{' '}
+                <span style={{ color: '#4A6FA5' }}>aprendizaje</span>{' '}
+                del futuro
+              </h1>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Aprende las habilidades más demandadas del mercado con cursos en español, certificados verificables y una comunidad de miles de estudiantes.
-          </p>
+              <p className="text-lg mb-10 max-w-xl" style={{ color: '#6A7D92', lineHeight: '1.7' }}>
+                Aprende las habilidades más demandadas del mercado con cursos en español, certificados verificables y una comunidad de miles de estudiantes. <strong style={{ color: '#4A6FA5' }}>100% gratuito.</strong>
+              </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/register"
-              className="flex items-center gap-2 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-primary-500/25 transition-all hover:shadow-xl hover:shadow-primary-500/30 hover:-translate-y-0.5"
-            >
-              Comenzar gratis
-              <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="#courses"
-              className="flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold px-8 py-3.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
-            >
-              <Play size={16} className="text-primary-500" />
-              Ver cursos
-            </Link>
-          </div>
+              <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 mb-10">
+                <Link
+                  href="/register"
+                  className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl text-white shadow-lg transition-all hover:-translate-y-0.5"
+                  style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 24px rgba(74,111,165,0.3)' }}
+                >
+                  Comenzar gratis
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  href="#courses"
+                  className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl transition-all hover:bg-[#F0F4FA]"
+                  style={{ backgroundColor: 'white', color: '#4A6FA5', border: '1px solid #C8D8EE' }}
+                >
+                  <Play size={16} style={{ color: '#4A6FA5' }} />
+                  Ver cursos
+                </Link>
+              </div>
 
-          {/* Social proof */}
-          <div className="flex items-center justify-center gap-6 mt-12 text-sm text-slate-500 dark:text-slate-400">
-            <div className="flex -space-x-2">
-              {['A', 'B', 'C', 'D'].map((l) => (
-                <div key={l} className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-400 border-2 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold">
-                  {l}
+              {/* Social proof */}
+              <div className="flex items-center gap-5 text-sm" style={{ color: '#8A9BB0' }}>
+                <div className="flex -space-x-2">
+                  {['A','B','C','D'].map((l) => (
+                    <div key={l} className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: '#4A6FA5' }}>
+                      {l}
+                    </div>
+                  ))}
                 </div>
-              ))}
+                <span>+50,000 estudiantes activos</span>
+                <div className="flex items-center gap-1 text-amber-500">
+                  <Star size={13} fill="currentColor" />
+                  <span className="font-semibold" style={{ color: '#1C2A3A' }}>4.9/5</span>
+                </div>
+              </div>
             </div>
-            <span>+50,000 estudiantes ya aprenden con nosotros</span>
-            <div className="flex items-center gap-1 text-amber-500">
-              <Star size={14} fill="currentColor" />
-              <span className="text-slate-700 dark:text-slate-300 font-semibold">4.9/5</span>
+
+            {/* Logo / Imagen */}
+            <div className="flex-shrink-0 flex flex-col items-center gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(circle, rgba(74,111,165,0.15) 0%, transparent 70%)', transform: 'scale(1.4)' }} />
+                <Image
+                  src="/logo-cc360.jpg"
+                  alt="Classroom Cloud 360"
+                  width={320}
+                  height={320}
+                  className="relative rounded-3xl object-cover"
+                  style={{ boxShadow: '0 24px 64px rgba(74,111,165,0.25)' }}
+                  priority
+                />
+              </div>
+              {/* Floating badges */}
+              <div className="flex gap-3">
+                {[
+                  { Icon: CheckCircle, text: 'Gratis', color: '#059669' },
+                  { Icon: Award,       text: 'Certificados', color: '#4A6FA5' },
+                  { Icon: Globe,       text: 'En español', color: '#7C3AED' },
+                ].map(({ Icon, text, color }) => (
+                  <div key={text} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white shadow-sm" style={{ color, border: `1px solid ${color}22` }}>
+                    <Icon size={12} />
+                    {text}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section id="stats" className="py-16 bg-gradient-to-r from-primary-500 to-secondary-600">
+      {/* ─── Stats ─── */}
+      <section id="stats" className="py-16" style={{ backgroundColor: '#3A5580' }}>
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <p className="text-3xl md:text-4xl font-extrabold text-white mb-1">{s.value}</p>
-              <p className="text-primary-100 text-sm">{s.label}</p>
+              <p className="text-sm" style={{ color: '#A3BDE1' }}>{s.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section id="features" className="py-24 bg-slate-50 dark:bg-slate-900">
+      {/* ─── Features ─── */}
+      <section id="features" className="py-24" style={{ backgroundColor: '#F4F4F0' }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">Todo lo que necesitas para aprender</h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+            <h2 className="text-3xl font-bold mb-3" style={{ color: '#1C2A3A' }}>Todo lo que necesitas para aprender</h2>
+            <p className="max-w-xl mx-auto" style={{ color: '#6A7D92' }}>
               Diseñado para estudiantes modernos que quieren aprender de manera efectiva y flexible.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
-              <div key={f.title} className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200">
-                <div className="w-11 h-11 rounded-xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mb-4">
-                  <f.icon size={22} className="text-primary-600 dark:text-primary-400" />
+              <div key={f.title} className="bg-white rounded-2xl p-6 hover:-translate-y-1 transition-all duration-200" style={{ border: '1px solid #E8E8E2', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#EAF0F8' }}>
+                  <f.icon size={22} style={{ color: '#4A6FA5' }} />
                 </div>
-                <h3 className="font-semibold text-slate-900 dark:text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{f.desc}</p>
+                <h3 className="font-semibold mb-2" style={{ color: '#1C2A3A' }}>{f.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#6A7D92' }}>{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Courses Preview */}
-      <section id="courses" className="py-24 bg-white dark:bg-slate-950">
+      {/* ─── Instructor Badge ─── */}
+      <section className="py-12 bg-white" style={{ borderTop: '1px solid #E8E8E2', borderBottom: '1px solid #E8E8E2' }}>
+        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-6">
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#EAF0F8' }}>
+            <GraduationCap size={32} style={{ color: '#4A6FA5' }} />
+          </div>
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#8A9BB0' }}>Instructor Principal</p>
+            <h3 className="text-xl font-bold mb-1" style={{ color: '#1C2A3A' }}>Instructor certificado · 5 estrellas en Superprof</h3>
+            <p className="text-sm" style={{ color: '#6A7D92' }}>
+              Experto en tecnología con calificación perfecta en Superprof Chile. Especialidad en ciberseguridad, desarrollo web, inteligencia artificial e infraestructura.
+            </p>
+          </div>
+          <div className="flex items-center gap-1 shrink-0">
+            {[1,2,3,4,5].map(i => <Star key={i} size={20} fill="#F59E0B" className="text-amber-400" />)}
+            <span className="ml-2 font-bold text-lg" style={{ color: '#1C2A3A' }}>5.0</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Courses ─── */}
+      <section id="courses" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Cursos más populares</h2>
-              <p className="text-slate-500 dark:text-slate-400">Aprende las habilidades más demandadas del mercado</p>
+              <h2 className="text-3xl font-bold mb-2" style={{ color: '#1C2A3A' }}>Cursos más populares</h2>
+              <p style={{ color: '#6A7D92' }}>Aprende las habilidades más demandadas del mercado · <strong style={{ color: '#059669' }}>Todos 100% gratuitos</strong></p>
             </div>
-            <Link href="/courses" className="hidden sm:flex items-center gap-1.5 text-primary-600 font-medium text-sm hover:text-primary-700 transition-colors">
+            <Link href="/courses" className="hidden sm:flex items-center gap-1.5 font-medium text-sm hover:opacity-80 transition-opacity" style={{ color: '#4A6FA5' }}>
               Ver todos <ArrowRight size={16} />
             </Link>
           </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {mockCourses.map((course) => (
-              <Link key={course.id} href="/login" className="group block bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-card overflow-hidden hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200">
-                <div className="h-40 bg-gradient-to-br from-primary-400 to-secondary-500 relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <BookOpen size={40} className="text-white/30" />
-                  </div>
+              <Link
+                key={course.id}
+                href="/login"
+                className="group block rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-200"
+                style={{ border: '1px solid #E8E8E2', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', backgroundColor: 'white' }}
+              >
+                <div className={`h-36 bg-gradient-to-br ${course.color} relative flex items-center justify-center`}>
+                  <course.icon size={44} className="text-white/25" />
                   <div className="absolute top-3 right-3">
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${course.price === 'Gratis' ? 'bg-emerald-500 text-white' : 'bg-white/90 text-slate-800'}`}>
-                      {course.price}
+                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500 text-white">
+                      Gratis
                     </span>
                   </div>
                 </div>
                 <div className="p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${levelColors[course.level]}`}>{course.level}</span>
-                    <span className="text-xs text-slate-400">{course.category}</span>
+                    <span className="text-xs" style={{ color: '#9AABB8' }}>{course.category}</span>
                   </div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white text-sm line-clamp-2 mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{course.title}</h3>
-                  <div className="flex items-center justify-between text-xs text-slate-400">
+                  <h3 className="font-semibold text-sm line-clamp-2 mb-3 group-hover:text-[#4A6FA5] transition-colors" style={{ color: '#1C2A3A' }}>
+                    {course.title}
+                  </h3>
+                  <div className="flex items-center justify-between text-xs" style={{ color: '#9AABB8' }}>
                     <div className="flex items-center gap-1">
                       <Users size={12} />
                       {course.students.toLocaleString()} estudiantes
                     </div>
                     <div className="flex items-center gap-1 text-amber-500">
                       <Star size={12} fill="currentColor" />
-                      <span className="text-slate-600 dark:text-slate-400">{course.rating}</span>
+                      <span style={{ color: '#6A7D92' }}>{course.rating}</span>
                     </div>
                   </div>
                 </div>
@@ -204,16 +321,17 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600">
+      {/* ─── CTA ─── */}
+      <section className="py-24" style={{ background: 'linear-gradient(135deg, #3A5580 0%, #4A6FA5 100%)' }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">¿Listo para empezar tu viaje de aprendizaje?</h2>
-          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
-            Únete a más de 50,000 estudiantes que ya están transformando sus carreras con Classroom Cloud 360.
+          <p className="mb-8 max-w-xl mx-auto" style={{ color: '#A3BDE1' }}>
+            Únete a más de 50,000 estudiantes que ya están transformando sus carreras. Completamente gratis.
           </p>
           <Link
             href="/register"
-            className="inline-flex items-center gap-2 bg-white text-primary-600 font-semibold px-8 py-3.5 rounded-xl hover:bg-primary-50 transition-all shadow-lg"
+            className="inline-flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-0.5"
+            style={{ backgroundColor: 'white', color: '#4A6FA5' }}
           >
             Crear cuenta gratis
             <ArrowRight size={18} />
@@ -221,23 +339,21 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 dark:bg-slate-950 text-slate-400 py-12 px-6">
+      {/* ─── Footer ─── */}
+      <footer className="py-12 px-6" style={{ backgroundColor: '#1C2A3A' }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
-                <GraduationCap size={18} className="text-white" />
-              </div>
+              <Image src="/logo-cc360.jpg" alt="CC360" width={32} height={32} className="rounded-lg object-cover" />
               <span className="font-bold text-white">Classroom Cloud 360</span>
             </div>
-            <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-6 text-sm" style={{ color: '#8A9BB0' }}>
               <Link href="#" className="hover:text-white transition-colors">Términos</Link>
               <Link href="#" className="hover:text-white transition-colors">Privacidad</Link>
               <Link href="#" className="hover:text-white transition-colors">Soporte</Link>
               <Link href="#" className="hover:text-white transition-colors">Contacto</Link>
             </div>
-            <p className="text-sm">© 2024 Classroom Cloud 360. Todos los derechos reservados.</p>
+            <p className="text-sm" style={{ color: '#6A7D92' }}>© 2026 Classroom Cloud 360. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
