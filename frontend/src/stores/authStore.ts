@@ -22,6 +22,7 @@ interface AuthState {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   setUser: (user: User) => void;
+  setAuth: (user: User, token: string) => void;
   fetchMe: () => Promise<void>;
 }
 
@@ -62,6 +63,12 @@ export const useAuthStore = create<AuthState>()(
       },
 
       setUser: (user) => set({ user }),
+
+      setAuth: (user, token) => {
+        if (typeof window !== 'undefined') localStorage.setItem('cc360_token', token);
+        setCookie('cc360_token', token, 7);
+        set({ user, token, isAuthenticated: true });
+      },
 
       fetchMe: async () => {
         try {
