@@ -8,8 +8,9 @@
   * { @apply box-border; }
   html { @apply scroll-smooth; }
   body {
-    @apply font-sans antialiased text-slate-800;
-    background-color: #f0f2f5;
+    @apply font-sans antialiased;
+    background-color: #F2F2EE;
+    color: #1C2A3A;
   }
   :focus-visible { @apply outline-none ring-2 ring-primary-600 ring-offset-1; }
   ::selection { @apply bg-primary-100 text-primary-900; }

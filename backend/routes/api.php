@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AnalyticsController;
+use App\Http\Controllers\Api\V1\SocialAuthController;
 use App\Http\Controllers\Api\V1\AssignmentController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CategoryController;
@@ -33,6 +34,10 @@ Route::prefix('v1')->middleware('tenant')->group(function () {
         Route::post('/forgot-password',[AuthController::class, 'forgotPassword']);
         Route::post('/reset-password', [AuthController::class, 'resetPassword']);
     });
+
+    // ─── OAuth Social Login ────────────────────────────────────────────────
+    Route::get('/auth/{provider}/redirect',  [SocialAuthController::class, 'redirect']);
+    Route::get('/auth/{provider}/callback',  [SocialAuthController::class, 'callback']);
 
     // ─── Public endpoints ────────────────────────────────────────────────
     Route::get('/courses',                    [CourseController::class, 'index']);

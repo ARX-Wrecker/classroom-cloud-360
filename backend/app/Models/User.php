@@ -24,6 +24,9 @@ class User extends Authenticatable
         'two_factor_secret',
         'two_factor_enabled',
         'last_login_at',
+        'google_id',
+        'microsoft_id',
+        'email_verified_at',
     ];
 
     protected $hidden = [
