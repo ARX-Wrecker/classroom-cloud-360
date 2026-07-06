@@ -84,10 +84,17 @@ function LoginForm() {
     try {
       await login(data.email, data.password);
       toast.success('¡Bienvenido de vuelta!');
-      router.push(redirect);
+      // Full-page navigation ensures middleware reads the fresh cookie
+      window.location.href = redirect;
     } catch (err: unknown) {
-      const msg = (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail;
-      toast.error(msg || 'Credenciales incorrectas');
+      const msg =
+        (err as { response?: { data?: { message?: string; detail?: string } } })
+          ?.response?.data?.message ||
+        (err as { response?: { data?: { detail?: string } } })
+          ?.response?.data?.detail ||
+        (err as { message?: string })?.message ||
+        'Credenciales incorrectas. Intenta nuevamente.';
+      toast.error(msg);
     }
   };
 
@@ -102,7 +109,7 @@ function LoginForm() {
               <GraduationCap size={22} className="text-white" />
             </div>
             <div>
-              <p className="font-bold leading-none" style={{ color: '#1C2A3A' }}>Classroom Cloud 360</p>
+              <p className="font-bold leading-none" style={{ color: '#1C2A3A' }}>Class Cloud 360</p>
               <p className="text-xs mt-0.5" style={{ color: '#8A9BB0' }}>Plataforma de aprendizaje</p>
             </div>
           </div>

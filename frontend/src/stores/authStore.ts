@@ -38,18 +38,18 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoading: true });
         try {
           const response = await authApi.login(email, password);
-          // backend returns: { success, data: { user, access_token, token_type } }
           const token = response.data?.data?.access_token;
           const user  = response.data?.data?.user as User;
           if (!token) throw new Error('No se recibió token del servidor');
-          // Store in both localStorage and cookie (cookie needed for SSR middleware)
           if (typeof window !== 'undefined') {
             localStorage.setItem('cc360_token', token);
           }
+          // Set cookie BEFORE updating state so middleware sees it on next navigation
           setCookie('cc360_token', token, 7);
-          set({ token, user, isAuthenticated: true });
-        } finally {
+          set({ token, user, isAuthenticated: true, isLoading: false });
+        } catch (err) {
           set({ isLoading: false });
+          throw err;
         }
       },
 

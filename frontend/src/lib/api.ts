@@ -5,7 +5,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/a
 export const api = axios.create({
   baseURL: API_BASE_URL,
   headers: { 'Content-Type': 'application/json' },
-  timeout: 15000,
+  timeout: 45000,
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
@@ -25,9 +25,12 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('cc360_token');
-        document.cookie = 'cc360_token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-        window.location.href = '/login';
+        const onAuthPage = ['/login', '/register', '/'].some(p => window.location.pathname === p || window.location.pathname.startsWith('/oauth'));
+        if (!onAuthPage) {
+          localStorage.removeItem('cc360_token');
+          document.cookie = 'cc360_token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+          window.location.href = '/login';
+        }
       }
     }
     return Promise.reject(error);

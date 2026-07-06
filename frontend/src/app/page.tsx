@@ -19,10 +19,10 @@ const features = [
 ];
 
 const mockCourses = [
-  { id: 2, icon: Lock,     title: 'Ciberseguridad y Ethical Hacking',                          category: 'Seguridad',       level: 'Avanzado',     students: 2750, rating: 4.8, color: 'from-red-500 to-rose-600' },
-  { id: 5, icon: Server,   title: 'Infraestructura de Servidores y Datacenter',                category: 'Infraestructura', level: 'Intermedio',   students: 1430, rating: 4.7, color: 'from-slate-500 to-gray-600' },
-  { id: 7, icon: Shield,   title: 'Informática Básica · Intermedia · Avanzada · macOS · Seg.', category: 'Computación',     level: 'Principiante', students: 4100, rating: 4.8, color: 'from-teal-500 to-cyan-600' },
-  { id: 9, icon: Terminal, title: 'Scripting con PowerShell',                                  category: 'Automatización',  level: 'Intermedio',   students: 980,  rating: 4.6, color: 'from-indigo-500 to-blue-700' },
+  { id: 5, icon: Server,   title: 'Infraestructura de Servidores y Datacenter', category: 'Infraestructura', level: 'Intermedio',   students: 1430, rating: 4.7, color: 'from-slate-500 to-gray-600',  img: '/infraestructura.jpg' },
+  { id: 7, icon: Shield,   title: 'Informática Básica · Intermedia · Avanzada', category: 'Computación',     level: 'Principiante', students: 4100, rating: 4.8, color: 'from-teal-500 to-cyan-600',   img: '/informatica.jpg' },
+  { id: 9, icon: Terminal, title: 'Scripting con PowerShell',                   category: 'Automatización',  level: 'Intermedio',   students: 980,  rating: 4.6, color: 'from-indigo-500 to-blue-700', img: '/powershell.jpg' },
+  { id: 2, icon: Lock,     title: 'Ciberseguridad y Ethical Hacking',           category: 'Seguridad',       level: 'Avanzado',     students: 2750, rating: 4.8, color: 'from-red-500 to-rose-600',    img: '/ciberseguridad.jpg' },
 ];
 
 const levelColors: Record<string, string> = {
@@ -58,10 +58,10 @@ export default function LandingPage() {
 
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div style={{ filter: 'drop-shadow(0 4px 14px rgba(74,111,165,0.45))' }}>
-              <Image src="/logo-cc360.jpg" alt="Class Cloud 360" width={64} height={64} className="rounded-2xl object-cover" priority />
+              <Image src="/logo-cc360.jpg" alt="Class Cloud 360" width={84} height={84} className="rounded-2xl object-cover" priority />
             </div>
             <div className="hidden lg:block">
-              <p className="font-extrabold text-base leading-tight" style={{ color: '#1C2A3A' }}>Class Cloud 360</p>
+              <p className="font-extrabold text-lg leading-tight" style={{ color: '#1C2A3A' }}>Class Cloud 360</p>
               <p className="text-xs" style={{ color: '#8A9BB0' }}>Plataforma educativa</p>
             </div>
           </Link>
@@ -293,8 +293,8 @@ export default function LandingPage() {
           <div ref={trackRef} className="flex gap-6 w-max" style={{ willChange: 'transform' }}>
             {[...mockCourses, ...mockCourses, ...mockCourses].map((course, idx) => (
               <Link key={`${course.id}-${idx}`} href="/login" className="group block rounded-2xl overflow-hidden flex-shrink-0 hover:-translate-y-1 transition-transform duration-200" style={{ width: '300px', border: '1px solid #E8E8E2', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', backgroundColor: 'white' }}>
-                <div className={`h-36 bg-gradient-to-br ${course.color} relative flex items-center justify-center`}>
-                  <course.icon size={44} className="text-white/25" />
+                <div className="h-44 overflow-hidden relative">
+                  <Image src={course.img} alt={course.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="300px" loading="lazy" />
                 </div>
                 <div className="p-4">
                   <div className="flex items-center gap-2 mb-2">
@@ -376,21 +376,31 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Footer ─── */}
-      <footer className="py-12 px-6" style={{ backgroundColor: '#1C2A3A' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2">
-              <p className="font-bold text-sm" style={{ color: '#8A9BB0' }}>Class Cloud 360</p>
-            </div>
-            <div className="flex items-center gap-4 text-sm flex-wrap justify-center" style={{ color: '#8A9BB0' }}>
-              <Link href="/terminos"   className="hover:text-white transition-colors">Términos</Link>
-              <Link href="/cookies"    className="hover:text-white transition-colors">Cookies</Link>
-              <Link href="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
-              <Link href="/soporte"    className="hover:text-white transition-colors">Soporte</Link>
-              <Link href="/contacto"   className="hover:text-white transition-colors">Contacto</Link>
-            </div>
-            <p className="text-sm" style={{ color: '#6A7D92' }}>© 2026 Class Cloud 360</p>
+      {/* ─── Footer estilo profesional ─── */}
+      <footer style={{ backgroundColor: '#0A0A0A' }}>
+        {/* Créditos del creador */}
+        <div className="py-10 px-6 text-center" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <p className="text-sm mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
+            This platform was strategically designed, architected and developed by
+          </p>
+          <p className="text-2xl font-extrabold mb-1" style={{ color: '#7B6FE8' }}>Fernando González</p>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.2em' }}>
+            Computer &amp; Information Systems Engineer
+          </p>
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+            Enterprise Technology · Cloud Architecture · Cybersecurity · Digital Transformation
+          </p>
+        </div>
+        {/* Links + copyright */}
+        <div className="py-5 px-6">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <span>© 2026 Class Cloud 360</span>
+            <span className="hidden sm:inline" style={{ color: 'rgba(255,255,255,0.2)' }}>·</span>
+            <Link href="/terminos"   className="hover:text-white transition-colors">Términos</Link>
+            <Link href="/cookies"    className="hover:text-white transition-colors">Cookies</Link>
+            <Link href="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
+            <Link href="/soporte"    className="hover:text-white transition-colors">Soporte</Link>
+            <Link href="/contacto"   className="hover:text-white transition-colors">Contacto</Link>
           </div>
         </div>
       </footer>
