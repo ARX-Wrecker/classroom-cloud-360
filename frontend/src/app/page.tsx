@@ -5,8 +5,7 @@ import { useEffect, useRef } from 'react';
 import {
   BookOpen, Users, Award, Zap, Globe, Shield, BarChart3,
   Star, ArrowRight, GraduationCap, Play, Lock,
-  Terminal, Server, Mail, MessageCircle, ExternalLink,
-  CheckCircle, TrendingUp, BookMarked, Video,
+  Terminal, Server, ExternalLink, CheckCircle,
 } from 'lucide-react';
 
 const features = [
@@ -123,76 +122,21 @@ export default function LandingPage() {
                   <Play size={16} /> Ver cursos
                 </Link>
               </div>
-              <div className="flex items-center gap-6 text-sm" style={{ color: '#8A9BB0' }}>
-                <div className="flex items-center gap-1.5"><CheckCircle size={15} style={{ color: '#4A6FA5' }} /> Español e Inglés</div>
-                <div className="flex items-center gap-1.5"><CheckCircle size={15} style={{ color: '#4A6FA5' }} /> Certificados verificables</div>
-                <div className="flex items-center gap-1.5"><CheckCircle size={15} style={{ color: '#4A6FA5' }} /> 15+ años experiencia</div>
-              </div>
             </div>
 
-            {/* Mockup dashboard */}
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, #1C2A3A 0%, #2E4060 100%)', border: '1px solid #3A5580', padding: '20px' }}>
-                {/* Barra superior mockup */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-red-400 opacity-80"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400 opacity-80"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400 opacity-80"></div>
-                  <div className="flex-1 mx-3 h-6 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}></div>
-                </div>
-                {/* Header mockup */}
-                <div className="flex items-center justify-between mb-5 p-3 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}>
-                  <div className="flex items-center gap-2">
-                    <Image src="/logo-cc360.jpg" alt="" width={28} height={28} className="rounded-lg object-cover" />
-                    <span className="text-white text-xs font-bold">Class Cloud 360</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-16 h-5 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
-                    <div className="w-7 h-7 rounded-full" style={{ backgroundColor: '#4A6FA5' }}></div>
-                  </div>
-                </div>
-                {/* Stats cards */}
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  {[
-                    { icon: BookMarked, label: 'Cursos', value: '4+', color: '#4A6FA5' },
-                    { icon: Users,      label: 'Estudiantes', value: '9.2K', color: '#25D366' },
-                    { icon: TrendingUp, label: 'Completados', value: '98%', color: '#F59E0B' },
-                  ].map((s) => (
-                    <div key={s.label} className="p-3 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                      <s.icon size={16} style={{ color: s.color }} className="mb-1" />
-                      <p className="text-white font-bold text-lg leading-none">{s.value}</p>
-                      <p className="text-xs mt-0.5" style={{ color: '#7A9BB8' }}>{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-                {/* Course rows */}
-                {[
-                  { icon: Lock,     label: 'Ciberseguridad y Ethical Hacking', progress: 78, color: '#EF4444' },
-                  { icon: Server,   label: 'Infraestructura de Servidores',    progress: 52, color: '#64748B' },
-                  { icon: Terminal, label: 'Scripting con PowerShell',         progress: 91, color: '#6366F1' },
-                ].map((c) => (
-                  <div key={c.label} className="flex items-center gap-3 mb-2.5 p-3 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: c.color + '22' }}>
-                      <c.icon size={14} style={{ color: c.color }} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs text-white truncate mb-1">{c.label}</p>
-                      <div className="h-1.5 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                        <div className="h-1.5 rounded-full transition-all" style={{ width: `${c.progress}%`, backgroundColor: c.color }}></div>
-                      </div>
-                    </div>
-                    <span className="text-xs font-semibold shrink-0" style={{ color: '#7A9BB8' }}>{c.progress}%</span>
-                  </div>
-                ))}
-                {/* Video row */}
-                <div className="flex items-center gap-3 mt-3 p-3 rounded-xl" style={{ backgroundColor: '#4A6FA522', border: '1px solid #4A6FA544' }}>
-                  <Video size={16} style={{ color: '#4A6FA5' }} />
-                  <p className="text-xs text-white flex-1">Módulo 3: Hardening de Sistemas</p>
-                  <span className="text-xs font-semibold" style={{ color: '#4A6FA5' }}>EN VIVO</span>
-                </div>
-              </div>
+            {/* Imagen trabajo-educativo */}
+            <div className="relative hidden lg:block rounded-2xl overflow-hidden shadow-2xl" style={{ height: '480px' }}>
+              <Image
+                src="/trabajo-educativo.jpg"
+                alt="Educación profesional Class Cloud 360"
+                fill
+                className="object-cover"
+                sizes="50vw"
+                priority
+              />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(10,18,32,0.35) 0%, rgba(74,111,165,0.15) 100%)' }} />
               {/* Badge flotante */}
-              <div className="absolute -bottom-4 -left-4 px-4 py-2.5 rounded-2xl shadow-xl text-sm font-semibold text-white" style={{ backgroundColor: '#25D366', boxShadow: '0 8px 24px rgba(37,211,102,0.4)' }}>
+              <div className="absolute bottom-6 left-6 px-4 py-2.5 rounded-2xl shadow-xl text-sm font-semibold text-white" style={{ backgroundColor: '#25D366', boxShadow: '0 8px 24px rgba(37,211,102,0.4)' }}>
                 ★ 5.0 Superprof
               </div>
             </div>
@@ -318,75 +262,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Contacto Profesional con imagen de fondo ─── */}
-      <section className="relative py-28 overflow-hidden">
-        {/* Imagen de fondo */}
-        <div className="absolute inset-0">
-          <Image
-            src="/trabajo-educativo.jpg"
-            alt="Educación profesional"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          {/* Overlay oscuro profesional */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, rgba(10,18,32,0.88) 0%, rgba(18,30,52,0.82) 50%, rgba(10,18,32,0.92) 100%)' }} />
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#5A8BC0', letterSpacing: '0.25em' }}>Contacto directo</p>
-          <h2 className="text-5xl font-extrabold text-white mb-4 leading-tight">¿Listo para comenzar?</h2>
-          <p className="text-lg mb-14 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.7' }}>
-            Escríbeme directamente — respondo en menos de 24 horas con orientación personalizada para tu aprendizaje.
-          </p>
-
-          {/* Tarjetas */}
-          <div className="grid sm:grid-cols-2 gap-6 mb-10">
-            {/* Email */}
-            <a
-              href="mailto:fernando_gonzalez@live.cl"
-              className="group flex flex-col items-center gap-5 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2"
-              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
-            >
-              <div className="w-18 h-18 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300" style={{ width: 68, height: 68, background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 12px 32px rgba(74,111,165,0.55)' }}>
-                <Mail size={30} className="text-white" />
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#6A9FD8', letterSpacing: '0.18em' }}>Correo Electrónico</p>
-                <p className="font-bold text-white text-xl mb-1">fernando_gonzalez@live.cl</p>
-                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Consultas generales · Inscripción a cursos</p>
-              </div>
-            </a>
-
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/56XXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-5 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2"
-              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(37,211,102,0.25)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
-            >
-              <div className="rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300" style={{ width: 68, height: 68, background: 'linear-gradient(135deg, #25D366, #1DB954)', boxShadow: '0 12px 32px rgba(37,211,102,0.45)' }}>
-                <MessageCircle size={30} className="text-white" />
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#4DB87A', letterSpacing: '0.18em' }}>WhatsApp</p>
-                <p className="font-bold text-white text-xl mb-1">+56 9 XXXX XXXX</p>
-                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Respuesta inmediata · Consultas personalizadas</p>
-              </div>
-            </a>
-          </div>
-
-          {/* CTA */}
-          <Link
-            href="/register"
-            className="inline-flex items-center gap-3 px-12 py-4 rounded-2xl font-bold text-white text-lg transition-all hover:-translate-y-1"
-            style={{ background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 12px 40px rgba(74,111,165,0.6)' }}
-          >
-            Acceder al Portal <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
 
       {/* ─── Footer estilo profesional ─── */}
       <footer style={{ backgroundColor: '#0A0A0A' }}>
