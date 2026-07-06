@@ -25,8 +25,10 @@ return [
     ],
 
     'allowed_origins_patterns' => [
-        // Allow all subdomains of classroomcloud360.com in production
-        '#^https://.*\.classroomcloud360\.com$#',
+        '#^https://.*\.classcloud360\.cl$#',
+        '#^https://classcloud360\.cl$#',
+        '#^http://localhost(:\d+)?$#',
+        '#^http://127\.0\.0\.1(:\d+)?$#',
     ],
 
     'allowed_headers' => [

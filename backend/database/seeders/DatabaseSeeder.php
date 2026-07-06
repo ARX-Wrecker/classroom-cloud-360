@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->command->info('🌱 Seeding Classroom Cloud 360...');
+        $this->command->info('🌱 Seeding Class Cloud 360...');
 
         // ── 1. Tenant ─────────────────────────────────────────────────────
         $tenant = Tenant::create([
-            'name'       => 'Demo Academy',
-            'slug'       => 'demo-academy',
-            'domain'     => 'demo.classroomcloud360.local',
+            'name'       => 'Class Cloud 360',
+            'slug'       => 'classcloud360',
+            'domain'     => 'classcloud360.cl',
             'plan'       => 'pro',
             'is_active'  => true,
             'max_students' => 500,
@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
             'settings'   => [
                 'primary_color'   => '#6366F1',
                 'secondary_color' => '#8B5CF6',
-                'logo_text'       => 'Demo Academy',
+                'logo_text'       => 'Class Cloud 360',
                 'allow_free_courses' => true,
-                'certificate_signature' => 'Demo Academy — Director Académico',
+                'certificate_signature' => 'Class Cloud 360 — Director Académico',
             ],
         ]);
 
@@ -49,11 +49,11 @@ class DatabaseSeeder extends Seeder
         $superadmin = User::create([
             'tenant_id' => $tenant->id,
             'name'      => 'Super Administrador',
-            'email'     => 'admin@classroomcloud360.com',
+            'email'     => 'admin@classcloud360.cl',
             'password'  => Hash::make('Admin123!'),
             'role'      => User::ROLE_SUPERADMIN,
             'is_active' => true,
-            'bio'       => 'Administrador principal de la plataforma Classroom Cloud 360.',
+            'bio'       => 'Administrador principal de la plataforma Class Cloud 360.',
             'phone'     => '+56912345678',
             'timezone'  => 'America/Santiago',
             'language'  => 'es',
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
         $instructor1 = User::create([
             'tenant_id' => $tenant->id,
             'name'      => 'María González',
-            'email'     => 'maria.gonzalez@classroomcloud360.com',
+            'email'     => 'maria.gonzalez@classcloud360.cl',
             'password'  => Hash::make('Instructor123!'),
             'role'      => User::ROLE_INSTRUCTOR,
             'is_active' => true,
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
         $instructor2 = User::create([
             'tenant_id' => $tenant->id,
             'name'      => 'Carlos Mendoza',
-            'email'     => 'carlos.mendoza@classroomcloud360.com',
+            'email'     => 'carlos.mendoza@classcloud360.cl',
             'password'  => Hash::make('Instructor123!'),
             'role'      => User::ROLE_INSTRUCTOR,
             'is_active' => true,
@@ -483,10 +483,10 @@ class DatabaseSeeder extends Seeder
         $this->command->table(
             ['Credential', 'Value'],
             [
-                ['SuperAdmin Email', 'admin@classroomcloud360.com'],
+                ['SuperAdmin Email', 'admin@classcloud360.cl'],
                 ['SuperAdmin Password', 'Admin123!'],
-                ['Instructor 1 Email', 'maria.gonzalez@classroomcloud360.com'],
-                ['Instructor 2 Email', 'carlos.mendoza@classroomcloud360.com'],
+                ['Instructor 1 Email', 'maria.gonzalez@classcloud360.cl'],
+                ['Instructor 2 Email', 'carlos.mendoza@classcloud360.cl'],
                 ['Instructor Password', 'Instructor123!'],
                 ['Student Email (example)', 'ana.lopez@example.com'],
                 ['Student Password', 'Student123!'],

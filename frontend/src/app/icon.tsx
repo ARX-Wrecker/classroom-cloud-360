@@ -20,7 +20,7 @@ export default function Icon() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://classroom-cloud-360-lms.vercel.app/logo-cc360.jpg"
+          src="/logo-cc360.jpg"
           alt=""
           width={32}
           height={32}
