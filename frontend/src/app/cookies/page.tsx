@@ -36,7 +36,7 @@ export default function CookiesPage() {
           },
           {
             title: 'Contacto',
-            body: 'Si tienes preguntas sobre nuestra política de cookies, contáctanos en soporte@classroomcloud360.cl',
+            body: 'Si tienes preguntas sobre nuestra política de cookies, contáctanos en soporte@classcloud360.cl',
           },
         ].map((s) => (
           <div key={s.title} className="mb-8">

@@ -27,7 +27,7 @@ export default function ContactoPage() {
             <h2 className="text-xl font-bold mb-6" style={{ color: '#1C2A3A' }}>Información de Contacto</h2>
             <div className="space-y-5">
               {[
-                { Icon: Mail,    label: 'Email',     value: 'contacto@classroomcloud360.cl' },
+                { Icon: Mail,    label: 'Email',     value: 'contacto@classcloud360.cl' },
                 { Icon: Phone,   label: 'Teléfono',  value: '+56 9 XXXX XXXX' },
                 { Icon: MapPin,  label: 'Ubicación', value: 'Santiago, Chile' },
               ].map(({ Icon, label, value }) => (

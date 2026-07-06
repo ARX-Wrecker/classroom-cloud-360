@@ -25,7 +25,7 @@ export default function SoportePage() {
         {/* Canales de contacto */}
         <div className="grid md:grid-cols-3 gap-4 mb-16">
           {[
-            { Icon: Mail, title: 'Email', desc: 'soporte@classroomcloud360.cl', sub: 'Respuesta en 24h' },
+            { Icon: Mail, title: 'Email', desc: 'soporte@classcloud360.cl', sub: 'Respuesta en 24h' },
             { Icon: MessageCircle, title: 'Chat en vivo', desc: 'Disponible dentro de la plataforma', sub: 'Lun–Vie 9:00–18:00' },
             { Icon: Clock, title: 'Horario', desc: 'Lunes a Viernes', sub: '9:00 AM – 6:00 PM (Chile)' },
           ].map(({ Icon, title, desc, sub }) => (

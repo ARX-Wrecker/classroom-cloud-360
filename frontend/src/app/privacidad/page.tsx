@@ -32,7 +32,7 @@ export default function PrivacidadPage() {
           },
           {
             title: '5. Tus Derechos (Ley 19.628 Chile / GDPR)',
-            body: 'Tienes derecho a acceder, rectificar, cancelar y oponerte al tratamiento de tus datos personales. Para ejercer estos derechos, escríbenos a privacidad@classroomcloud360.cl.',
+            body: 'Tienes derecho a acceder, rectificar, cancelar y oponerte al tratamiento de tus datos personales. Para ejercer estos derechos, escríbenos a privacidad@classcloud360.cl.',
           },
           {
             title: '6. Retención de Datos',

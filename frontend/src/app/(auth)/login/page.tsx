@@ -181,8 +181,8 @@ function LoginForm() {
           <div className="mt-6 p-4 rounded-xl" style={{ backgroundColor: '#F5F7FA', border: '1px solid #E5EBF4' }}>
             <p className="text-xs font-semibold mb-2" style={{ color: '#7A8FA4' }}>Credenciales de demostración:</p>
             <div className="space-y-1 text-xs" style={{ color: '#5A6E82' }}>
-              <p>Admin: <span className="font-mono">admin@classroomcloud360.com</span> / <span className="font-mono">Admin123!</span></p>
-              <p>Instructor: <span className="font-mono">maria.gonzalez@classroomcloud360.com</span> / <span className="font-mono">Instructor123!</span></p>
+              <p>Admin: <span className="font-mono">admin@classcloud360.cl</span> / <span className="font-mono">Admin123!</span></p>
+              <p>Instructor: <span className="font-mono">maria.gonzalez@classcloud360.cl</span> / <span className="font-mono">Instructor123!</span></p>
               <p>Estudiante: <span className="font-mono">ana.lopez@example.com</span> / <span className="font-mono">Student123!</span></p>
             </div>
           </div>
