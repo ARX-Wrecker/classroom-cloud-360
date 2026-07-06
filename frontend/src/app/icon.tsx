@@ -10,22 +10,18 @@ export default function Icon() {
         style={{
           width: 32,
           height: 32,
-          borderRadius: '50%',
-          overflow: 'hidden',
+          borderRadius: 8,
+          background: '#4A6FA5',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'white',
+          color: 'white',
+          fontSize: 18,
+          fontWeight: 700,
+          fontFamily: 'sans-serif',
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/logo-cc360.jpg"
-          alt=""
-          width={32}
-          height={32}
-          style={{ borderRadius: '50%', objectFit: 'cover' }}
-        />
+        C
       </div>
     ),
     { ...size }
