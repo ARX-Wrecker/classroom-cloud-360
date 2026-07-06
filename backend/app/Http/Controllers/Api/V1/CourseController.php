@@ -9,6 +9,7 @@ use App\Models\Enrollment;
 use App\Models\Notification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -47,7 +48,10 @@ class CourseController extends Controller
             }
 
             $perPage = min((int) $request->get('per_page', 15), 50);
-            $courses = $query->paginate($perPage);
+
+            // Cache public course listing for 2 minutes (no auth-specific data)
+            $cacheKey = 'courses:' . md5(serialize($request->only(['search','category','level','instructor','is_free','language','sort_by','sort_dir','page','per_page'])));
+            $courses  = Cache::remember($cacheKey, 120, fn() => $query->paginate($perPage));
 
             return response()->json([
                 'success' => true,
