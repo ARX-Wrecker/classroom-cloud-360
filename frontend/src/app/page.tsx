@@ -318,31 +318,43 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Contacto Profesional ─── */}
-      <section className="py-24" style={{ background: 'linear-gradient(160deg, #0F1C2E 0%, #1C2A3A 40%, #243550 100%)' }}>
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          {/* Encabezado */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#5A8BC0' }}>Contacto directo</p>
-          <h2 className="text-4xl font-extrabold text-white mb-3">¿Listo para comenzar?</h2>
-          <p className="text-lg mb-12 max-w-xl mx-auto" style={{ color: '#7A9BB8' }}>
+      {/* ─── Contacto Profesional con imagen de fondo ─── */}
+      <section className="relative py-28 overflow-hidden">
+        {/* Imagen de fondo */}
+        <div className="absolute inset-0">
+          <Image
+            src="/trabajo-educativo.jpg"
+            alt="Educación profesional"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          {/* Overlay oscuro profesional */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, rgba(10,18,32,0.88) 0%, rgba(18,30,52,0.82) 50%, rgba(10,18,32,0.92) 100%)' }} />
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#5A8BC0', letterSpacing: '0.25em' }}>Contacto directo</p>
+          <h2 className="text-5xl font-extrabold text-white mb-4 leading-tight">¿Listo para comenzar?</h2>
+          <p className="text-lg mb-14 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)', lineHeight: '1.7' }}>
             Escríbeme directamente — respondo en menos de 24 horas con orientación personalizada para tu aprendizaje.
           </p>
 
           {/* Tarjetas */}
-          <div className="grid sm:grid-cols-2 gap-5 mb-8">
+          <div className="grid sm:grid-cols-2 gap-6 mb-10">
             {/* Email */}
             <a
               href="mailto:fernando_gonzalez@live.cl"
-              className="group flex flex-col items-center gap-4 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-              style={{ background: 'linear-gradient(135deg, rgba(74,111,165,0.18) 0%, rgba(74,111,165,0.06) 100%)', border: '1px solid rgba(74,111,165,0.3)', backdropFilter: 'blur(12px)' }}
+              className="group flex flex-col items-center gap-5 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2"
+              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
             >
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 8px 24px rgba(74,111,165,0.5)' }}>
-                <Mail size={28} className="text-white" />
+              <div className="w-18 h-18 rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300" style={{ width: 68, height: 68, background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 12px 32px rgba(74,111,165,0.55)' }}>
+                <Mail size={30} className="text-white" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#5A8BC0' }}>Correo Electrónico</p>
-                <p className="font-bold text-white text-lg">fernando_gonzalez@live.cl</p>
-                <p className="text-sm mt-1" style={{ color: '#7A9BB8' }}>Consultas generales · Inscripción a cursos</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#6A9FD8', letterSpacing: '0.18em' }}>Correo Electrónico</p>
+                <p className="font-bold text-white text-xl mb-1">fernando_gonzalez@live.cl</p>
+                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Consultas generales · Inscripción a cursos</p>
               </div>
             </a>
 
@@ -351,16 +363,16 @@ export default function LandingPage() {
               href="https://wa.me/56XXXXXXXXX"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-4 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-              style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.15) 0%, rgba(37,211,102,0.05) 100%)', border: '1px solid rgba(37,211,102,0.3)', backdropFilter: 'blur(12px)' }}
+              className="group flex flex-col items-center gap-5 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2"
+              style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(37,211,102,0.25)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
             >
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg, #25D366, #1DB954)', boxShadow: '0 8px 24px rgba(37,211,102,0.4)' }}>
-                <MessageCircle size={28} className="text-white" />
+              <div className="rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300" style={{ width: 68, height: 68, background: 'linear-gradient(135deg, #25D366, #1DB954)', boxShadow: '0 12px 32px rgba(37,211,102,0.45)' }}>
+                <MessageCircle size={30} className="text-white" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#4DB87A' }}>WhatsApp</p>
-                <p className="font-bold text-white text-lg">+56 9 XXXX XXXX</p>
-                <p className="text-sm mt-1" style={{ color: '#6ABF88' }}>Respuesta inmediata · Consultas personalizadas</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#4DB87A', letterSpacing: '0.18em' }}>WhatsApp</p>
+                <p className="font-bold text-white text-xl mb-1">+56 9 XXXX XXXX</p>
+                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>Respuesta inmediata · Consultas personalizadas</p>
               </div>
             </a>
           </div>
@@ -368,8 +380,8 @@ export default function LandingPage() {
           {/* CTA */}
           <Link
             href="/register"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-2xl font-bold text-white text-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
-            style={{ background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 8px 32px rgba(74,111,165,0.5)' }}
+            className="inline-flex items-center gap-3 px-12 py-4 rounded-2xl font-bold text-white text-lg transition-all hover:-translate-y-1"
+            style={{ background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 12px 40px rgba(74,111,165,0.6)' }}
           >
             Acceder al Portal <ArrowRight size={20} />
           </Link>
