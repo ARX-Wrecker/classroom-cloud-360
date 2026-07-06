@@ -10,10 +10,16 @@ import {
 
 const features = [
   {
+    icon: BarChart3,
+    title: 'Seguimiento de progreso',
+    desc: 'Analytics detallados de tu aprendizaje y progreso por curso.',
+    img: '/qa.jpg',
+  },
+  {
     icon: BookOpen,
     title: 'Contenido de calidad',
     desc: 'Cursos creados por expertos de la industria con material actualizado.',
-    img: '/aprendizaje-colaborativo.jpg',
+    img: '/seguimiento.jpg',
   },
   {
     icon: Users,
@@ -35,15 +41,9 @@ const features = [
   },
   {
     icon: Globe,
-    title: 'Contenido en español',
-    desc: 'Toda la plataforma y los cursos disponibles en español latinoamericano.',
-    img: '/seguimiento.jpg',
-  },
-  {
-    icon: BarChart3,
-    title: 'Seguimiento de progreso',
-    desc: 'Analytics detallados de tu aprendizaje y progreso por curso.',
-    img: '/qa.jpg',
+    title: 'Contenido en Español e Inglés',
+    desc: 'Toda la plataforma y los cursos disponibles en español e inglés para mayor alcance.',
+    img: '/spanish-english.jpg',
   },
 ];
 
@@ -124,9 +124,9 @@ export default function LandingPage() {
             <span className="font-bold text-[#1C2A3A]">Classroom Cloud 360</span>
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <Link href="#features" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Características</Link>
-            <Link href="#courses"  className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Cursos</Link>
-            <Link href="#instructor" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Instructor</Link>
+            <Link href="#quienes-somos" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Quiénes Somos</Link>
+            <Link href="#mision"        className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Nuestra Misión</Link>
+            <Link href="#courses"       className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Cursos</Link>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/login" className="text-sm font-medium text-[#1C2A3A] hover:text-[#4A6FA5] transition-colors">
@@ -245,6 +245,26 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ─── Quiénes Somos ─── */}
+      <section id="quienes-somos" className="py-20" style={{ backgroundColor: '#3A5580' }}>
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">¿Quiénes Somos?</h2>
+          <p className="text-lg max-w-3xl mx-auto" style={{ color: '#A3BDE1', lineHeight: '1.8' }}>
+            Somos una plataforma educativa chilena creada por un Ingeniero en Computación e Informática con más de 15 años de experiencia en Tecnologías de la Información. Nuestra misión es democratizar el acceso al conocimiento tecnológico en América Latina.
+          </p>
+        </div>
+      </section>
+
+      {/* ─── Nuestra Misión ─── */}
+      <section id="mision" className="py-20" style={{ backgroundColor: '#EAF0F8' }}>
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4" style={{ color: '#1C2A3A' }}>Nuestra Misión</h2>
+          <p className="text-lg max-w-3xl mx-auto" style={{ color: '#6A7D92', lineHeight: '1.8' }}>
+            Brindar educación tecnológica de alta calidad, completamente gratuita, con certificados verificables y en dos idiomas — Español e Inglés — para que ninguna barrera económica ni lingüística detenga tu crecimiento profesional.
+          </p>
         </div>
       </section>
 
@@ -418,11 +438,12 @@ export default function LandingPage() {
               <Image src="/logo-cc360.jpg" alt="CC360" width={36} height={36} className="rounded-lg object-cover" style={{ filter: 'drop-shadow(0 2px 8px rgba(74,111,165,0.5))' }} />
               <span className="font-bold text-white">Classroom Cloud 360</span>
             </div>
-            <div className="flex items-center gap-6 text-sm" style={{ color: '#8A9BB0' }}>
-              <Link href="#" className="hover:text-white transition-colors">Términos</Link>
-              <Link href="#" className="hover:text-white transition-colors">Privacidad</Link>
-              <Link href="#" className="hover:text-white transition-colors">Soporte</Link>
-              <Link href="#" className="hover:text-white transition-colors">Contacto</Link>
+            <div className="flex items-center gap-4 text-sm flex-wrap justify-center" style={{ color: '#8A9BB0' }}>
+              <Link href="/terminos"   className="hover:text-white transition-colors">Términos</Link>
+              <Link href="/cookies"    className="hover:text-white transition-colors">Cookies</Link>
+              <Link href="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
+              <Link href="/soporte"    className="hover:text-white transition-colors">Soporte</Link>
+              <Link href="/contacto"   className="hover:text-white transition-colors">Contacto</Link>
             </div>
             <p className="text-sm" style={{ color: '#6A7D92' }}>© 2026 Classroom Cloud 360. Todos los derechos reservados.</p>
           </div>
