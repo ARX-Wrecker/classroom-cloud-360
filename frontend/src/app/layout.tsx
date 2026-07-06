@@ -6,8 +6,8 @@ import { Providers } from './providers';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: { default: 'Classroom Cloud 360', template: '%s | Classroom Cloud 360' },
-  description: 'La plataforma de aprendizaje del futuro. Aprende, enseña y crece con Classroom Cloud 360.',
+  title: { default: 'Class Cloud 360', template: '%s | Class Cloud 360' },
+  description: 'La plataforma de aprendizaje del futuro. Aprende, enseña y crece con Class Cloud 360.',
   keywords: ['LMS', 'aprendizaje', 'cursos', 'e-learning', 'educación'],
   icons: {
     icon: '/logo-cc360.jpg',

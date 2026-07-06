@@ -6,6 +6,7 @@ import {
   BookOpen, Users, Award, Zap, Globe, Shield, BarChart3,
   Star, ArrowRight, GraduationCap, Play, Lock,
   Terminal, Server, Mail, MessageCircle, ExternalLink,
+  CheckCircle, TrendingUp, BookMarked, Video,
 } from 'lucide-react';
 
 const features = [
@@ -51,22 +52,20 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FAFAF8', color: '#1C2A3A' }}>
 
-      {/* ─── Navbar estilo profesional ─── */}
+      {/* ─── Navbar ─── */}
       <nav className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: 'rgba(255,255,255,0.97)', borderBottom: '2px solid #E8E8E2', boxShadow: '0 2px 12px rgba(0,0,0,0.07)' }}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
 
-          {/* Logo grande superior izquierdo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div style={{ filter: 'drop-shadow(0 4px 14px rgba(74,111,165,0.45))' }}>
-              <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={64} height={64} className="rounded-2xl object-cover" priority />
+              <Image src="/logo-cc360.jpg" alt="Class Cloud 360" width={64} height={64} className="rounded-2xl object-cover" priority />
             </div>
             <div className="hidden lg:block">
-              <p className="font-extrabold text-base leading-tight" style={{ color: '#1C2A3A' }}>Classroom Cloud 360</p>
+              <p className="font-extrabold text-base leading-tight" style={{ color: '#1C2A3A' }}>Class Cloud 360</p>
               <p className="text-xs" style={{ color: '#8A9BB0' }}>Plataforma educativa</p>
             </div>
           </Link>
 
-          {/* Links centrales estilo Moodle */}
           <div className="hidden md:flex items-center gap-1 flex-1 justify-center">
             {[
               { href: '#quienes-somos', label: 'Nosotros' },
@@ -87,7 +86,6 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* Auth buttons */}
           <div className="flex items-center gap-2 shrink-0">
             <Link href="/login" className="text-sm font-medium px-4 py-2 rounded-lg transition-all hover:bg-[#F4F4F0]" style={{ color: '#4A5568' }}>
               Iniciar sesión
@@ -99,24 +97,106 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* ─── Hero ─── */}
-      <section className="relative pt-32 pb-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #FAFAF8 50%, #EAF0F8 100%)' }}>
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1C2A3A' }}>
-            La plataforma de{' '}
-            <span style={{ color: '#4A6FA5' }}>aprendizaje</span>{' '}
-            del futuro
-          </h1>
-          <p className="text-lg mb-10 max-w-2xl mx-auto" style={{ color: '#6A7D92', lineHeight: '1.8' }}>
-            Accede al contenido, sube y descarga material educativo sin costo. La enseñanza de los cursos es lo que mantiene esta plataforma activa y en constante mejora.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/register" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl text-white shadow-lg transition-all hover:-translate-y-0.5" style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 24px rgba(74,111,165,0.3)' }}>
-              Acceso al Portal <ArrowRight size={18} />
-            </Link>
-            <Link href="#courses" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl transition-all hover:bg-[#F0F4FA]" style={{ backgroundColor: 'white', color: '#4A6FA5', border: '1px solid #C8D8EE' }}>
-              <Play size={16} /> Ver cursos
-            </Link>
+      {/* ─── Hero split-layout ─── */}
+      <section className="relative pt-28 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #FAFAF8 50%, #EAF0F8 100%)' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            {/* Texto + CTA */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6" style={{ backgroundColor: '#EAF0F8', color: '#4A6FA5', border: '1px solid #C8D8EE' }}>
+                <CheckCircle size={13} /> Plataforma de acceso libre
+              </div>
+              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1C2A3A' }}>
+                La plataforma de{' '}
+                <span style={{ color: '#4A6FA5' }}>aprendizaje</span>{' '}
+                del futuro
+              </h1>
+              <p className="text-lg mb-8" style={{ color: '#6A7D92', lineHeight: '1.8' }}>
+                Accede al contenido, sube y descarga material educativo sin costo. La enseñanza de los cursos es lo que mantiene esta plataforma activa y en constante mejora.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-4 mb-10">
+                <Link href="/register" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl text-white shadow-lg transition-all hover:-translate-y-0.5" style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 24px rgba(74,111,165,0.3)' }}>
+                  Acceso al Portal <ArrowRight size={18} />
+                </Link>
+                <Link href="#courses" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl transition-all hover:bg-[#F0F4FA]" style={{ backgroundColor: 'white', color: '#4A6FA5', border: '1px solid #C8D8EE' }}>
+                  <Play size={16} /> Ver cursos
+                </Link>
+              </div>
+              <div className="flex items-center gap-6 text-sm" style={{ color: '#8A9BB0' }}>
+                <div className="flex items-center gap-1.5"><CheckCircle size={15} style={{ color: '#4A6FA5' }} /> Español e Inglés</div>
+                <div className="flex items-center gap-1.5"><CheckCircle size={15} style={{ color: '#4A6FA5' }} /> Certificados verificables</div>
+                <div className="flex items-center gap-1.5"><CheckCircle size={15} style={{ color: '#4A6FA5' }} /> 15+ años experiencia</div>
+              </div>
+            </div>
+
+            {/* Mockup dashboard */}
+            <div className="relative hidden lg:block">
+              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, #1C2A3A 0%, #2E4060 100%)', border: '1px solid #3A5580', padding: '20px' }}>
+                {/* Barra superior mockup */}
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 rounded-full bg-red-400 opacity-80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-400 opacity-80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-400 opacity-80"></div>
+                  <div className="flex-1 mx-3 h-6 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}></div>
+                </div>
+                {/* Header mockup */}
+                <div className="flex items-center justify-between mb-5 p-3 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}>
+                  <div className="flex items-center gap-2">
+                    <Image src="/logo-cc360.jpg" alt="" width={28} height={28} className="rounded-lg object-cover" />
+                    <span className="text-white text-xs font-bold">Class Cloud 360</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-16 h-5 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+                    <div className="w-7 h-7 rounded-full" style={{ backgroundColor: '#4A6FA5' }}></div>
+                  </div>
+                </div>
+                {/* Stats cards */}
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  {[
+                    { icon: BookMarked, label: 'Cursos', value: '4+', color: '#4A6FA5' },
+                    { icon: Users,      label: 'Estudiantes', value: '9.2K', color: '#25D366' },
+                    { icon: TrendingUp, label: 'Completados', value: '98%', color: '#F59E0B' },
+                  ].map((s) => (
+                    <div key={s.label} className="p-3 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <s.icon size={16} style={{ color: s.color }} className="mb-1" />
+                      <p className="text-white font-bold text-lg leading-none">{s.value}</p>
+                      <p className="text-xs mt-0.5" style={{ color: '#7A9BB8' }}>{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+                {/* Course rows */}
+                {[
+                  { icon: Lock,     label: 'Ciberseguridad y Ethical Hacking', progress: 78, color: '#EF4444' },
+                  { icon: Server,   label: 'Infraestructura de Servidores',    progress: 52, color: '#64748B' },
+                  { icon: Terminal, label: 'Scripting con PowerShell',         progress: 91, color: '#6366F1' },
+                ].map((c) => (
+                  <div key={c.label} className="flex items-center gap-3 mb-2.5 p-3 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: c.color + '22' }}>
+                      <c.icon size={14} style={{ color: c.color }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-white truncate mb-1">{c.label}</p>
+                      <div className="h-1.5 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                        <div className="h-1.5 rounded-full transition-all" style={{ width: `${c.progress}%`, backgroundColor: c.color }}></div>
+                      </div>
+                    </div>
+                    <span className="text-xs font-semibold shrink-0" style={{ color: '#7A9BB8' }}>{c.progress}%</span>
+                  </div>
+                ))}
+                {/* Video row */}
+                <div className="flex items-center gap-3 mt-3 p-3 rounded-xl" style={{ backgroundColor: '#4A6FA522', border: '1px solid #4A6FA544' }}>
+                  <Video size={16} style={{ color: '#4A6FA5' }} />
+                  <p className="text-xs text-white flex-1">Módulo 3: Hardening de Sistemas</p>
+                  <span className="text-xs font-semibold" style={{ color: '#4A6FA5' }}>EN VIVO</span>
+                </div>
+              </div>
+              {/* Badge flotante */}
+              <div className="absolute -bottom-4 -left-4 px-4 py-2.5 rounded-2xl shadow-xl text-sm font-semibold text-white" style={{ backgroundColor: '#25D366', boxShadow: '0 8px 24px rgba(37,211,102,0.4)' }}>
+                ★ 5.0 Superprof
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -239,67 +319,60 @@ export default function LandingPage() {
       </section>
 
       {/* ─── Contacto Profesional ─── */}
-      <section className="py-24" style={{ background: 'linear-gradient(135deg, #1C2A3A 0%, #2E4060 100%)' }}>
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Logo + texto */}
-            <div className="flex flex-col items-center lg:items-start gap-4 text-center lg:text-left">
-              <div style={{ filter: 'drop-shadow(0 8px 24px rgba(74,111,165,0.5))' }}>
-                <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={100} height={100} className="rounded-2xl object-cover" />
+      <section className="py-24" style={{ background: 'linear-gradient(160deg, #0F1C2E 0%, #1C2A3A 40%, #243550 100%)' }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          {/* Encabezado */}
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#5A8BC0' }}>Contacto directo</p>
+          <h2 className="text-4xl font-extrabold text-white mb-3">¿Listo para comenzar?</h2>
+          <p className="text-lg mb-12 max-w-xl mx-auto" style={{ color: '#7A9BB8' }}>
+            Escríbeme directamente — respondo en menos de 24 horas con orientación personalizada para tu aprendizaje.
+          </p>
+
+          {/* Tarjetas */}
+          <div className="grid sm:grid-cols-2 gap-5 mb-8">
+            {/* Email */}
+            <a
+              href="mailto:fernando_gonzalez@live.cl"
+              className="group flex flex-col items-center gap-4 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              style={{ background: 'linear-gradient(135deg, rgba(74,111,165,0.18) 0%, rgba(74,111,165,0.06) 100%)', border: '1px solid rgba(74,111,165,0.3)', backdropFilter: 'blur(12px)' }}
+            >
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 8px 24px rgba(74,111,165,0.5)' }}>
+                <Mail size={28} className="text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-white mb-2">¿Tienes consultas?</h2>
-                <p style={{ color: '#A3BDE1' }}>Contáctame directamente — respondo en menos de 24 horas.</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#5A8BC0' }}>Correo Electrónico</p>
+                <p className="font-bold text-white text-lg">fernando_gonzalez@live.cl</p>
+                <p className="text-sm mt-1" style={{ color: '#7A9BB8' }}>Consultas generales · Inscripción a cursos</p>
               </div>
-            </div>
+            </a>
 
-            {/* Tarjetas de contacto */}
-            <div className="flex-1 flex flex-col gap-4 w-full">
-              {/* Email */}
-              <a
-                href="mailto:fernando_gonzalez@live.cl"
-                className="flex items-center gap-5 p-6 rounded-3xl transition-all hover:-translate-y-1"
-                style={{ background: 'linear-gradient(135deg, rgba(74,111,165,0.25) 0%, rgba(255,255,255,0.06) 100%)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)' }}
-              >
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg" style={{ backgroundColor: '#4A6FA5' }}>
-                  <Mail size={24} className="text-white" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#7A9BB8' }}>Correo Electrónico</p>
-                  <p className="font-bold text-white text-base">fernando_gonzalez@live.cl</p>
-                  <p className="text-sm mt-0.5" style={{ color: '#8AADC8' }}>Consultas generales y cursos</p>
-                </div>
-              </a>
-
-              {/* WhatsApp */}
-              <a
-                href="https://wa.me/56XXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-5 p-6 rounded-3xl transition-all hover:-translate-y-1"
-                style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.2) 0%, rgba(255,255,255,0.06) 100%)', border: '1px solid rgba(37,211,102,0.25)', backdropFilter: 'blur(8px)' }}
-              >
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg" style={{ backgroundColor: '#25D366' }}>
-                  <MessageCircle size={24} className="text-white" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#5DC980' }}>WhatsApp</p>
-                  <p className="font-bold text-white text-base">+56 9 XXXX XXXX</p>
-                  <p className="text-sm mt-0.5" style={{ color: '#6ABF88' }}>Consultas personalizadas · respuesta inmediata</p>
-                </div>
-              </a>
-
-              {/* Acceso al Portal */}
-              <Link
-                href="/register"
-                className="flex items-center justify-center gap-3 p-4 rounded-3xl font-semibold text-white transition-all hover:-translate-y-0.5 mt-1"
-                style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 32px rgba(74,111,165,0.45)' }}
-              >
-                Acceder al Portal
-                <ArrowRight size={18} />
-              </Link>
-            </div>
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/56XXXXXXXXX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-4 p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.15) 0%, rgba(37,211,102,0.05) 100%)', border: '1px solid rgba(37,211,102,0.3)', backdropFilter: 'blur(12px)' }}
+            >
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform" style={{ background: 'linear-gradient(135deg, #25D366, #1DB954)', boxShadow: '0 8px 24px rgba(37,211,102,0.4)' }}>
+                <MessageCircle size={28} className="text-white" />
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#4DB87A' }}>WhatsApp</p>
+                <p className="font-bold text-white text-lg">+56 9 XXXX XXXX</p>
+                <p className="text-sm mt-1" style={{ color: '#6ABF88' }}>Respuesta inmediata · Consultas personalizadas</p>
+              </div>
+            </a>
           </div>
+
+          {/* CTA */}
+          <Link
+            href="/register"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-2xl font-bold text-white text-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
+            style={{ background: 'linear-gradient(135deg, #4A6FA5, #3A5A90)', boxShadow: '0 8px 32px rgba(74,111,165,0.5)' }}
+          >
+            Acceder al Portal <ArrowRight size={20} />
+          </Link>
         </div>
       </section>
 
@@ -307,9 +380,9 @@ export default function LandingPage() {
       <footer className="py-12 px-6" style={{ backgroundColor: '#1C2A3A' }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link href="/" className="flex items-center">
-              <Image src="/logo-cc360.jpg" alt="CC360" width={36} height={36} className="rounded-lg object-cover" style={{ filter: 'drop-shadow(0 2px 8px rgba(74,111,165,0.5))' }} />
-            </Link>
+            <div className="flex items-center gap-2">
+              <p className="font-bold text-sm" style={{ color: '#8A9BB0' }}>Class Cloud 360</p>
+            </div>
             <div className="flex items-center gap-4 text-sm flex-wrap justify-center" style={{ color: '#8A9BB0' }}>
               <Link href="/terminos"   className="hover:text-white transition-colors">Términos</Link>
               <Link href="/cookies"    className="hover:text-white transition-colors">Cookies</Link>
@@ -317,21 +390,12 @@ export default function LandingPage() {
               <Link href="/soporte"    className="hover:text-white transition-colors">Soporte</Link>
               <Link href="/contacto"   className="hover:text-white transition-colors">Contacto</Link>
             </div>
-            <p className="text-sm" style={{ color: '#6A7D92' }}>© 2026 Classroom Cloud 360</p>
+            <p className="text-sm" style={{ color: '#6A7D92' }}>© 2026 Class Cloud 360</p>
           </div>
         </div>
       </footer>
 
       <style jsx global>{`
-        @keyframes heroFloat {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          33%       { transform: translateY(-14px) rotate(1deg); }
-          66%       { transform: translateY(-7px) rotate(-0.5deg); }
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 0.6; transform: scale(1.6); }
-          50%       { opacity: 1;   transform: scale(1.8); }
-        }
         @media (prefers-reduced-motion: reduce) {
           * { animation-duration: 0.01ms !important; }
         }
