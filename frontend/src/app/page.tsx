@@ -51,25 +51,48 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FAFAF8', color: '#1C2A3A' }}>
 
-      {/* ─── Navbar ─── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style={{ backgroundColor: 'rgba(255,255,255,0.92)', borderBottom: '1px solid #E8E8E2' }}>
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo only — sin texto */}
-          <Link href="/" className="flex items-center">
-            <div style={{ filter: 'drop-shadow(0 4px 12px rgba(74,111,165,0.4))' }}>
-              <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={44} height={44} className="rounded-xl object-cover" priority />
+      {/* ─── Navbar estilo profesional ─── */}
+      <nav className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: 'rgba(255,255,255,0.97)', borderBottom: '2px solid #E8E8E2', boxShadow: '0 2px 12px rgba(0,0,0,0.07)' }}>
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+
+          {/* Logo grande superior izquierdo */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <div style={{ filter: 'drop-shadow(0 4px 14px rgba(74,111,165,0.45))' }}>
+              <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={64} height={64} className="rounded-2xl object-cover" priority />
+            </div>
+            <div className="hidden lg:block">
+              <p className="font-extrabold text-base leading-tight" style={{ color: '#1C2A3A' }}>Classroom Cloud 360</p>
+              <p className="text-xs" style={{ color: '#8A9BB0' }}>Plataforma educativa</p>
             </div>
           </Link>
-          <div className="hidden md:flex items-center gap-6">
-            <Link href="#quienes-somos" className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Quiénes Somos</Link>
-            <Link href="#mision"        className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Nuestra Misión</Link>
-            <Link href="#courses"       className="text-sm text-[#6A7D92] hover:text-[#4A6FA5] transition-colors">Cursos</Link>
+
+          {/* Links centrales estilo Moodle */}
+          <div className="hidden md:flex items-center gap-1 flex-1 justify-center">
+            {[
+              { href: '#quienes-somos', label: 'Nosotros' },
+              { href: '#mision',        label: 'Nuestra Misión' },
+              { href: '#courses',       label: 'Cursos' },
+              { href: '#instructor',    label: 'Instructor' },
+              { href: '/soporte',       label: 'Soporte' },
+              { href: '/contacto',      label: 'Contacto' },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm font-medium px-3 py-2 rounded-lg transition-all hover:bg-[#EAF0F8] hover:text-[#4A6FA5]"
+                style={{ color: '#4A5568' }}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
-          <div className="flex items-center gap-3">
-            <Link href="/login" className="text-sm font-medium text-[#1C2A3A] hover:text-[#4A6FA5] transition-colors">
+
+          {/* Auth buttons */}
+          <div className="flex items-center gap-2 shrink-0">
+            <Link href="/login" className="text-sm font-medium px-4 py-2 rounded-lg transition-all hover:bg-[#F4F4F0]" style={{ color: '#4A5568' }}>
               Iniciar sesión
             </Link>
-            <Link href="/register" className="text-sm font-semibold px-4 py-2 rounded-xl text-white transition-all hover:-translate-y-0.5" style={{ backgroundColor: '#4A6FA5' }}>
+            <Link href="/register" className="text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-all hover:-translate-y-0.5 shadow-md" style={{ backgroundColor: '#4A6FA5', boxShadow: '0 4px 14px rgba(74,111,165,0.35)' }}>
               Acceso al Portal
             </Link>
           </div>
@@ -77,48 +100,23 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero ─── */}
-      <section className="relative pt-28 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #FAFAF8 50%, #EAF0F8 100%)' }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-
-            <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1C2A3A' }}>
-                La plataforma de{' '}
-                <span style={{ color: '#4A6FA5' }}>aprendizaje</span>{' '}
-                del futuro
-              </h1>
-              <p className="text-lg mb-10 max-w-xl" style={{ color: '#6A7D92', lineHeight: '1.7' }}>
-                Accede al contenido, sube y descarga material educativo sin costo. La enseñanza de los cursos es lo que mantiene esta plataforma activa y en constante mejora.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 mb-10">
-                <Link href="/register" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl text-white shadow-lg transition-all hover:-translate-y-0.5" style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 24px rgba(74,111,165,0.3)' }}>
-                  Acceso al Portal <ArrowRight size={18} />
-                </Link>
-                <Link href="#courses" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl transition-all hover:bg-[#F0F4FA]" style={{ backgroundColor: 'white', color: '#4A6FA5', border: '1px solid #C8D8EE' }}>
-                  <Play size={16} /> Ver cursos
-                </Link>
-              </div>
-              <div className="flex items-center gap-5 text-sm" style={{ color: '#8A9BB0' }}>
-                <div className="flex -space-x-2">
-                  {['A','B','C','D'].map(l => (
-                    <div key={l} className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: '#4A6FA5' }}>{l}</div>
-                  ))}
-                </div>
-                <span>+50,000 estudiantes activos</span>
-                <div className="flex items-center gap-1">
-                  <Star size={13} fill="#F59E0B" className="text-amber-400" />
-                  <span className="font-semibold" style={{ color: '#1C2A3A' }}>4.9/5</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Logo 3D flotante */}
-            <div className="flex-shrink-0">
-              <div style={{ filter: 'drop-shadow(0 32px 64px rgba(74,111,165,0.45)) drop-shadow(0 8px 24px rgba(74,111,165,0.3))', animation: 'heroFloat 4s ease-in-out infinite' }}>
-                <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(circle, rgba(74,111,165,0.25) 0%, transparent 70%)', transform: 'scale(1.6)', zIndex: 0, animation: 'pulse 4s ease-in-out infinite' }} />
-                <Image src="/logo-cc360.jpg" alt="Classroom Cloud 360" width={380} height={380} className="relative rounded-3xl object-cover" style={{ zIndex: 1 }} priority />
-              </div>
-            </div>
+      <section className="relative pt-32 pb-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #FAFAF8 50%, #EAF0F8 100%)' }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: '#1C2A3A' }}>
+            La plataforma de{' '}
+            <span style={{ color: '#4A6FA5' }}>aprendizaje</span>{' '}
+            del futuro
+          </h1>
+          <p className="text-lg mb-10 max-w-2xl mx-auto" style={{ color: '#6A7D92', lineHeight: '1.8' }}>
+            Accede al contenido, sube y descarga material educativo sin costo. La enseñanza de los cursos es lo que mantiene esta plataforma activa y en constante mejora.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/register" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl text-white shadow-lg transition-all hover:-translate-y-0.5" style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 24px rgba(74,111,165,0.3)' }}>
+              Acceso al Portal <ArrowRight size={18} />
+            </Link>
+            <Link href="#courses" className="flex items-center gap-2 font-semibold px-8 py-3.5 rounded-xl transition-all hover:bg-[#F0F4FA]" style={{ backgroundColor: 'white', color: '#4A6FA5', border: '1px solid #C8D8EE' }}>
+              <Play size={16} /> Ver cursos
+            </Link>
           </div>
         </div>
       </section>
@@ -256,20 +254,20 @@ export default function LandingPage() {
             </div>
 
             {/* Tarjetas de contacto */}
-            <div className="flex-1 grid sm:grid-cols-2 gap-5 w-full">
+            <div className="flex-1 flex flex-col gap-4 w-full">
               {/* Email */}
               <a
                 href="mailto:fernando_gonzalez@live.cl"
-                className="flex items-start gap-4 p-5 rounded-2xl transition-all hover:-translate-y-1 hover:bg-white/10"
-                style={{ backgroundColor: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
+                className="flex items-center gap-5 p-6 rounded-3xl transition-all hover:-translate-y-1"
+                style={{ background: 'linear-gradient(135deg, rgba(74,111,165,0.25) 0%, rgba(255,255,255,0.06) 100%)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)' }}
               >
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#4A6FA5' }}>
-                  <Mail size={20} className="text-white" />
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg" style={{ backgroundColor: '#4A6FA5' }}>
+                  <Mail size={24} className="text-white" />
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#7A9BB8' }}>Correo Electrónico</p>
-                  <p className="font-semibold text-white text-sm">fernando_gonzalez@live.cl</p>
-                  <p className="text-xs mt-0.5" style={{ color: '#6A8BA8' }}>Consultas generales y cursos</p>
+                  <p className="font-bold text-white text-base">fernando_gonzalez@live.cl</p>
+                  <p className="text-sm mt-0.5" style={{ color: '#8AADC8' }}>Consultas generales y cursos</p>
                 </div>
               </a>
 
@@ -278,24 +276,24 @@ export default function LandingPage() {
                 href="https://wa.me/56XXXXXXXXX"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-5 rounded-2xl transition-all hover:-translate-y-1 hover:bg-white/10"
-                style={{ backgroundColor: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
+                className="flex items-center gap-5 p-6 rounded-3xl transition-all hover:-translate-y-1"
+                style={{ background: 'linear-gradient(135deg, rgba(37,211,102,0.2) 0%, rgba(255,255,255,0.06) 100%)', border: '1px solid rgba(37,211,102,0.25)', backdropFilter: 'blur(8px)' }}
               >
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#25D366' }}>
-                  <MessageCircle size={20} className="text-white" />
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg" style={{ backgroundColor: '#25D366' }}>
+                  <MessageCircle size={24} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#7A9BB8' }}>WhatsApp</p>
-                  <p className="font-semibold text-white text-sm">+56 9 XXXX XXXX</p>
-                  <p className="text-xs mt-0.5" style={{ color: '#6A8BA8' }}>Consultas personalizadas</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: '#5DC980' }}>WhatsApp</p>
+                  <p className="font-bold text-white text-base">+56 9 XXXX XXXX</p>
+                  <p className="text-sm mt-0.5" style={{ color: '#6ABF88' }}>Consultas personalizadas · respuesta inmediata</p>
                 </div>
               </a>
 
               {/* Acceso al Portal */}
               <Link
                 href="/register"
-                className="sm:col-span-2 flex items-center justify-center gap-3 p-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-0.5"
-                style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 24px rgba(74,111,165,0.35)' }}
+                className="flex items-center justify-center gap-3 p-4 rounded-3xl font-semibold text-white transition-all hover:-translate-y-0.5 mt-1"
+                style={{ backgroundColor: '#4A6FA5', boxShadow: '0 8px 32px rgba(74,111,165,0.45)' }}
               >
                 Acceder al Portal
                 <ArrowRight size={18} />
