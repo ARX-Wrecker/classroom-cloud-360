@@ -39,11 +39,13 @@ return new class extends Migration
         });
 
         // notifications: leer no leídas por usuario
-        Schema::table('notifications', function (Blueprint $table) {
-            if (!$this->indexExists('notifications', 'notifications_user_read_index')) {
-                $table->index(['user_id', 'is_read', 'created_at'], 'notifications_user_read_index');
-            }
-        });
+        if (Schema::hasColumn('notifications', 'is_read')) {
+            Schema::table('notifications', function (Blueprint $table) {
+                if (!$this->indexExists('notifications', 'notifications_user_read_index')) {
+                    $table->index(['user_id', 'is_read', 'created_at'], 'notifications_user_read_index');
+                }
+            });
+        }
 
         // courses: filtros frecuentes
         Schema::table('courses', function (Blueprint $table) {

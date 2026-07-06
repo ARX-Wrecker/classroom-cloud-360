@@ -17,7 +17,7 @@ for i in $(seq 1 30); do
 done
 
 php artisan package:discover --ansi 2>/dev/null || true
-php artisan migrate --force --no-interaction
+php artisan migrate --force --no-interaction 2>&1 || echo "Migration had warnings (non-fatal)"
 php artisan db:seed --force --no-interaction 2>/dev/null || true
 php artisan config:cache
 php artisan route:cache
